@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
@@ -36,7 +38,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.1.1"
+        kotlinCompilerExtensionVersion = Libs.Androidx.Compose.version
     }
     packagingOptions {
         resources {
@@ -46,21 +48,21 @@ android {
 }
 
 dependencies {
+    implementation(Libs.Androidx.coreKtx)
+    implementation(Libs.Androidx.Activity.activityCompose)
+    implementation(Libs.Androidx.Navigation.navigationCompose)
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    implementation("androidx.activity:activity-compose:1.4.0")
-    implementation("androidx.navigation:navigation-compose:2.5.0-alpha03")
+    implementation(Libs.Androidx.Compose.ui)
+    implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.uiToolingPreview)
+    implementation(Libs.Androidx.Compose.materialIconsExtended)
 
-    implementation("androidx.compose.ui:ui:1.1.1")
-    implementation("androidx.compose.material:material:1.1.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.1.1")
-    implementation("androidx.compose.material:material-icons-extended:1.1.1")
+    implementation(Libs.Hilt.android)
+    kapt(Libs.Hilt.androidCompiler)
 
-    implementation("com.google.accompanist:accompanist-swiperefresh:0.23.1")
-    implementation("com.google.accompanist:accompanist-insets:0.23.1")
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.23.1")
-    implementation("com.google.accompanist:accompanist-navigation-animation:0.23.1")
+    implementation(Libs.Accompanist.insets)
+    implementation(Libs.Accompanist.navigationAnimation)
+    implementation(Libs.Accompanist.systemUiController)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
