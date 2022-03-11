@@ -1,4 +1,4 @@
-package com.nikolaenko.playground.ui.feed
+package com.nikolaenko.feed.ui
 
 import androidx.compose.material.Surface
 import androidx.compose.material.Text

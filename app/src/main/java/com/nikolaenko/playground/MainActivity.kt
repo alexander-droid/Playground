@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material.icons.Icons.Filled
+import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
@@ -22,15 +22,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.nikolaenko.feed.ui.Feed
 import com.nikolaenko.playground.Screen.Feed
 import com.nikolaenko.playground.Screen.Profile
 import com.nikolaenko.playground.Screen.Settings
 import com.nikolaenko.playground.theme.PlaygroundTheme
-import com.nikolaenko.playground.ui.feed.Feed
 import com.nikolaenko.playground.ui.main.BottomBar
 import com.nikolaenko.playground.ui.main.DrawerContent
-import com.nikolaenko.playground.ui.profile.Profile
-import com.nikolaenko.playground.ui.settings.Settings
+import com.nikolaenko.profile.ui.Profile
+import com.nikolaenko.settings.ui.Settings
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class MainActivity : ComponentActivity() {
@@ -81,7 +81,7 @@ class MainActivity : ComponentActivity() {
 }
 
 sealed class Screen(val route: String, val image: ImageVector, @StringRes val titleId: Int) {
-    object Feed : Screen("feed", Filled.List, R.string.bottom_tab_feed)
-    object Profile : Screen("profile", Filled.Person, R.string.bottom_tab_profile)
-    object Settings : Screen("settings", Filled.Settings, R.string.bottom_tab_settings)
+    object Feed : Screen("feed", Icons.Filled.List, R.string.bottom_tab_feed)
+    object Profile : Screen("profile", Icons.Filled.Person, R.string.bottom_tab_profile)
+    object Settings : Screen("settings", Icons.Filled.Settings, R.string.bottom_tab_settings)
 }

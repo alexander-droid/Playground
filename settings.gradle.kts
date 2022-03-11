@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Playground"
 include(":app")
+include(":feature:feed")
+include(":feature:profile")
+include(":feature:settings")
+include(":core")

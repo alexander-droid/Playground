@@ -1,4 +1,4 @@
-package com.nikolaenko.playground.ui.profile
+package com.nikolaenko.profile.ui
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
