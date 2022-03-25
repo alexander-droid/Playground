@@ -17,35 +17,42 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.nikolaenko.core.theme.PlaygroundTheme
 import com.nikolaenko.feed.ui.Feed
 import com.nikolaenko.playground.Screen.Feed
 import com.nikolaenko.playground.Screen.Profile
 import com.nikolaenko.playground.Screen.Settings
-import com.nikolaenko.playground.theme.PlaygroundTheme
 import com.nikolaenko.playground.ui.main.BottomBar
 import com.nikolaenko.playground.ui.main.DrawerContent
 import com.nikolaenko.profile.ui.Profile
 import com.nikolaenko.settings.ui.Settings
-import kotlinx.coroutines.flow.MutableStateFlow
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val state = MutableStateFlow(true)
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         setContent {
 
-            val isDark = state.collectAsState()
+            val viewModel = viewModel<MainViewModel>(factory = factory)
+
+            val state = viewModel.state.collectAsState()
 
             ProvideWindowInsets {
-                PlaygroundTheme(darkTheme = isDark.value) {
+                PlaygroundTheme(darkTheme = state.value.isDarkTheme) {
 
                     val systemUiController = rememberSystemUiController()
                     systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = MaterialTheme.colors.isLight)
@@ -61,7 +68,7 @@ class MainActivity : ComponentActivity() {
                     Surface(color = MaterialTheme.colors.background) {
                         Scaffold(
                             bottomBar = { BottomBar(navController, screens) },
-                            drawerContent = { DrawerContent(::changeTheme) }
+                            drawerContent = { DrawerContent(viewModel::toggleDarkMode) }
                         ) { innerPadding ->
                             NavHost(navController, startDestination = Feed.route, Modifier.padding(innerPadding)) {
                                 composable(Feed.route) { Feed(navController) }
@@ -73,10 +80,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-
-    private fun changeTheme() {
-        state.value = !state.value
     }
 }
 

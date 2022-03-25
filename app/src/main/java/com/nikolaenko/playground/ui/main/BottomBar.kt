@@ -1,14 +1,17 @@
 package com.nikolaenko.playground.ui.main
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -16,12 +19,14 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.insets.navigationBarsPadding
+import com.nikolaenko.core.theme.PlaygroundTheme
 import com.nikolaenko.playground.Screen
 
 @Composable
 fun BottomBar(navController: NavHostController, screens: List<Screen>) {
     BottomNavigation(
-        modifier = Modifier.background(MaterialTheme.colors.primary).navigationBarsPadding(),
+        modifier = Modifier.background(PlaygroundTheme.colors.surface).navigationBarsPadding(),
+        backgroundColor = Color(0x00000000),
         elevation = 0.dp
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()

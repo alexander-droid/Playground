@@ -1,5 +1,6 @@
 package com.nikolaenko.feed.ui
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -11,8 +12,7 @@ import com.google.accompanist.insets.statusBarsPadding
 @Composable
 fun Feed(navHostController: NavHostController) {
     Surface(
-        modifier = Modifier.statusBarsPadding(),
-        color = Color(0xFFFFEA00)
+        modifier = Modifier.statusBarsPadding().fillMaxSize()
     ) {
         Text(
             text = "Feed!"

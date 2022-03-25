@@ -37,6 +37,9 @@ android {
 
 dependencies {
 
+    implementation(Libs.Androidx.coreKtx)
+    implementation(Libs.Androidx.Activity.activityCompose)
+
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
 

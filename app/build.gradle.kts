@@ -28,11 +28,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
+        freeCompilerArgs = listOf("-Xjvm-default=compatibility")
     }
     buildFeatures {
         compose = true
@@ -63,6 +64,7 @@ dependencies {
     implementation(Libs.Androidx.Compose.materialIconsExtended)
 
     implementation(Libs.Hilt.android)
+    implementation(Libs.Hilt.navigationCompose)
     kapt(Libs.Hilt.androidCompiler)
 
     implementation(Libs.Accompanist.insets)

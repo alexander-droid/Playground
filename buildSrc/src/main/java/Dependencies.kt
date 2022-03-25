@@ -19,6 +19,7 @@ object Libs {
         const val version = "2.38.1"
         const val plugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
         const val android = "com.google.dagger:hilt-android:$version"
+        const val navigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
         const val androidCompiler = "com.google.dagger:hilt-android-compiler:$version"
     }
 
@@ -27,6 +28,7 @@ object Libs {
         const val appcompat = "androidx.appcompat:appcompat:1.4.1"
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
         const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+        const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
 
         object Activity {
             const val activityCompose = "androidx.activity:activity-compose:1.4.0"
