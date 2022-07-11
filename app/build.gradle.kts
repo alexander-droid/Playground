@@ -1,17 +1,20 @@
+import com.google.protobuf.gradle.*
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
+    id("com.google.protobuf")  version "0.8.12"
 }
 
 android {
-    compileSdk = 31
+    compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
         applicationId = "com.nikolaenko.playground"
-        minSdk = 26
-        targetSdk = 31
+        minSdk = Libs.minSdkVersion
+        targetSdk = Libs.targetSdkVersion
         versionCode = 1
         versionName = "1.0"
 
@@ -24,7 +27,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -52,16 +58,18 @@ dependencies {
     implementation(project(":feature:feed"))
     implementation(project(":feature:profile"))
     implementation(project(":feature:settings"))
-    implementation(project(":core"))
+    implementation(project(":coreUi"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
     implementation(Libs.Androidx.coreKtx)
-    implementation(Libs.Androidx.Activity.activityCompose)
     implementation(Libs.Androidx.Navigation.navigationCompose)
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
     implementation(Libs.Androidx.Compose.uiToolingPreview)
     implementation(Libs.Androidx.Compose.materialIconsExtended)
+    implementation(Libs.Androidx.Compose.activityCompose)
 
     implementation(Libs.Hilt.android)
     implementation(Libs.Hilt.navigationCompose)
@@ -71,9 +79,30 @@ dependencies {
     implementation(Libs.Accompanist.navigationAnimation)
     implementation(Libs.Accompanist.systemUiController)
 
+    implementation(Libs.Timber.timber)
+
+    implementation(Libs.Androidx.DataStore.dataStore)
+    implementation(Libs.Protobuf.javalite)
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
     debugImplementation("androidx.compose.ui:ui-tooling:1.1.1")
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${Libs.Protobuf.version}"
+    }
+
+    generateProtoTasks {
+        all().forEach { task ->
+            task.plugins {
+                this.create("java") {
+                    this.option("lite")
+                }
+            }
+        }
+    }
 }

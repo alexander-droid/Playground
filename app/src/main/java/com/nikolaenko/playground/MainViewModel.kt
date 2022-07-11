@@ -1,37 +1,46 @@
 package com.nikolaenko.playground
 
-import android.util.Log
 import com.nikolaenko.core.ui.BaseViewModel
-import javax.inject.Inject
-import kotlinx.coroutines.delay
+import com.nikolaenko.playground.domain.datastore.ThemeDataStore
+import com.nikolaenko.playground.domain.model.Theme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import timber.log.Timber
+import javax.inject.Inject
 
 abstract class MainViewModel : BaseViewModel() {
     abstract val state: StateFlow<State>
 
     data class State(
-        val isDarkTheme: Boolean = true
+        val isDarkTheme: Boolean = false
     )
 
     abstract fun toggleDarkMode()
 }
 
-class MainViewModelImpl @Inject constructor() : MainViewModel() {
+class MainViewModelImpl @Inject constructor(
+    private val themeDataStore: ThemeDataStore
+) : MainViewModel() {
 
     override val state = MutableStateFlow(State())
 
     init {
-        Log.d("dfgdgf", "init")
         launch {
-            delay(3000)
-            state.emit(State(true))
+            themeDataStore.flow.collect {
+                Timber.d("theme: $it")
+                state.value = State(isDarkTheme = it.isDark)
+            }
         }
     }
 
     override fun toggleDarkMode() {
         launch {
-            state.emit(state.value.copy(isDarkTheme = !state.value.isDarkTheme))
+            Timber.d("update")
+            themeDataStore.update(
+                Theme(
+                    isDark = !state.value.isDarkTheme
+                )
+            )
         }
     }
 }

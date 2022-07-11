@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
-        minSdk = 26
-        targetSdk = 31
+        minSdk = Libs.minSdkVersion
+        targetSdk = Libs.targetSdkVersion
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -36,14 +36,16 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
 
+    implementation(project(":coreUi"))
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
 
     implementation(Libs.Androidx.Navigation.navigationCompose)
 
     implementation(Libs.Accompanist.insets)
+
+    implementation(Libs.Timber.timber)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

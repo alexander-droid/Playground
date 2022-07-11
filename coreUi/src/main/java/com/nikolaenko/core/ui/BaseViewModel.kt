@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 abstract class BaseViewModel: ViewModel() {
 
-    private val errorHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+    private val errorHandler = CoroutineExceptionHandler { _, throwable ->
         Log.e("BaseViewModel", "errorHandler", throwable)
     }
 

@@ -1,8 +1,9 @@
-package com.nikolaenko.playground.di
+package com.nikolaenko.playground.di.modules
 
 import androidx.lifecycle.ViewModel
 import com.nikolaenko.playground.MainViewModel
 import com.nikolaenko.playground.MainViewModelImpl
+import com.nikolaenko.playground.di.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -22,15 +22,11 @@ class ViewModelProviderFactory @Inject constructor(
                 }
             }
         }
-        requireNotNull(creator) { "unknown model class $modelClass" }
+        requireNotNull(creator) { "Unknown model class $modelClass" }
         return try {
             creator.get() as T
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
-    }
-
-    companion object {
-        private const val TAG = "ViewModelProviderFactor"
     }
 }

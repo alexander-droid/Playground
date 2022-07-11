@@ -5,17 +5,20 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import com.google.accompanist.insets.statusBarsPadding
+import timber.log.Timber
 
 @Composable
-fun Feed(navHostController: NavHostController) {
+fun Feed(navHostController: TestNav, block: () -> Unit) {
+    Timber.tag("efegreg").d("Feed")
     Surface(
         modifier = Modifier.statusBarsPadding().fillMaxSize()
     ) {
+        Timber.tag("efegreg").d("Feed Text")
         Text(
             text = "Feed!"
         )
     }
 }
+class TestNav(nav: NavHostController)

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
-        minSdk = 26
-        targetSdk = 31
+        minSdk = Libs.minSdkVersion
+        targetSdk = Libs.targetSdkVersion
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -38,7 +38,7 @@ android {
 dependencies {
 
     implementation(Libs.Androidx.coreKtx)
-    implementation(Libs.Androidx.Activity.activityCompose)
+    implementation(Libs.Androidx.Compose.activityCompose)
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
