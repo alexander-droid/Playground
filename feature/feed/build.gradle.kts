@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -21,11 +22,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
@@ -36,8 +37,10 @@ android {
 }
 
 dependencies {
-
     implementation(project(":coreUi"))
+    implementation(project(":core"))
+    api(project(":feature:feed:data"))
+
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
 
@@ -47,7 +50,7 @@ dependencies {
 
     implementation(Libs.Timber.timber)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    implementation(Libs.Hilt.android)
+    implementation(Libs.Hilt.navigationCompose)
+    kapt(Libs.Hilt.androidCompiler)
 }

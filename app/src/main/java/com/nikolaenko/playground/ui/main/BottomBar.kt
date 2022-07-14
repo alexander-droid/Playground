@@ -19,7 +19,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.insets.navigationBarsPadding
-import com.nikolaenko.core.theme.PlaygroundTheme
+import com.nikolaenko.coreui.theme.PlaygroundTheme
 import com.nikolaenko.playground.Screen
 
 @Composable

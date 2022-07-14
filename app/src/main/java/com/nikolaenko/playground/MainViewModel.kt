@@ -1,11 +1,10 @@
 package com.nikolaenko.playground
 
-import com.nikolaenko.core.ui.BaseViewModel
-import com.nikolaenko.playground.domain.datastore.ThemeDataStore
-import com.nikolaenko.playground.domain.model.Theme
+import com.nikolaenko.core.viewmodel.BaseViewModel
+import com.nikolaenko.settings.domain.datastore.ThemeDataStore
+import com.nikolaenko.settings.domain.model.Theme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import timber.log.Timber
 import javax.inject.Inject
 
 abstract class MainViewModel : BaseViewModel() {
@@ -27,7 +26,6 @@ class MainViewModelImpl @Inject constructor(
     init {
         launch {
             themeDataStore.flow.collect {
-                Timber.d("theme: $it")
                 state.value = State(isDarkTheme = it.isDark)
             }
         }
@@ -35,7 +33,6 @@ class MainViewModelImpl @Inject constructor(
 
     override fun toggleDarkMode() {
         launch {
-            Timber.d("update")
             themeDataStore.update(
                 Theme(
                     isDark = !state.value.isDarkTheme

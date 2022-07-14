@@ -30,10 +30,23 @@ object Libs {
 
     object Androidx {
 
+        const val lifecycleVersion = "2.6.0-alpha01"
+
         const val appcompat = "androidx.appcompat:appcompat:1.4.1"
         const val coreKtx = "androidx.core:core-ktx:1.8.0"
-        const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
-        const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
+
+        // ViewModel
+        const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+        // ViewModel utilities for Compose
+        const val lifecycleViewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
+        // Lifecycles only (without ViewModel or LiveData)
+        const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+        // Annotation processor - if using Java8, use the following instead of lifecycle-compiler
+        const val lifecycleCommonJava8 = "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+        // optional - helpers for implementing LifecycleOwner in a Service
+        const val lifecycleService = "androidx.lifecycle:lifecycle-service:$lifecycleVersion"
+        // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+        const val lifecycleProcess = "androidx.lifecycle:lifecycle-process:$lifecycleVersion"
 
         object Compose {
             const val version = "1.2.0-beta01"
@@ -57,6 +70,7 @@ object Libs {
 
     object Protobuf {
         const val version = "3.19.4"
+        const val pluginVersion = "0.8.12"
         const val javalite = "com.google.protobuf:protobuf-javalite:$version"
     }
 

@@ -1,6 +1,5 @@
 package com.nikolaenko.playground
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,29 +17,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.core.view.WindowCompat
-import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.nikolaenko.core.theme.PlaygroundTheme
+import com.nikolaenko.coreui.theme.PlaygroundTheme
 import com.nikolaenko.feed.ui.Feed
-import com.nikolaenko.feed.ui.TestNav
-import com.nikolaenko.playground.Screen.Feed
-import com.nikolaenko.playground.Screen.Profile
-import com.nikolaenko.playground.Screen.Settings
-import com.nikolaenko.playground.datastore.ThemeSerializer
+import com.nikolaenko.playground.Screen.*
 import com.nikolaenko.playground.ui.main.BottomBar
 import com.nikolaenko.playground.ui.main.DrawerContent
 import com.nikolaenko.profile.ui.Profile
 import com.nikolaenko.settings.ui.Settings
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -57,7 +48,6 @@ class MainActivity : ComponentActivity() {
             val viewModel = viewModel<MainViewModel>(factory = factory)
 
             val state = viewModel.state.collectAsState()
-            Timber.tag("efegreg").d("state $state")
             ProvideWindowInsets {
                 PlaygroundTheme(darkTheme = state.value.isDarkTheme) {
 
@@ -78,8 +68,7 @@ class MainActivity : ComponentActivity() {
                             drawerContent = { DrawerContent(viewModel::toggleDarkMode) }
                         ) { innerPadding ->
                             NavHost(navController, startDestination = Feed.route, Modifier.padding(innerPadding)) {
-                                Timber.tag("efegreg").d("NavHost")
-                                composable(Feed.route) { Feed(TestNav(navController)) {} }
+                                composable(Feed.route) { Feed(navController) {} }
                                 composable(Profile.route) { Profile(navController) }
                                 composable(Settings.route) { Settings(navController) }
                             }
