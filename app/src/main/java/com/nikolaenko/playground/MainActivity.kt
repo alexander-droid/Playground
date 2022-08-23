@@ -17,8 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -31,21 +29,16 @@ import com.nikolaenko.playground.ui.main.BottomBar
 import com.nikolaenko.playground.ui.main.DrawerContent
 import com.nikolaenko.profile.ui.Profile
 import com.nikolaenko.settings.ui.Settings
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    @Inject
-    lateinit var factory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         setContent {
 
-            val viewModel = viewModel<MainViewModel>(factory = factory)
+            val viewModel = getViewModel<MainViewModel>()
 
             val state = viewModel.state.collectAsState()
             ProvideWindowInsets {

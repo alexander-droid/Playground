@@ -5,7 +5,6 @@ import com.nikolaenko.settings.domain.datastore.ThemeDataStore
 import com.nikolaenko.settings.domain.model.Theme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import javax.inject.Inject
 
 abstract class MainViewModel : BaseViewModel() {
     abstract val state: StateFlow<State>
@@ -17,7 +16,7 @@ abstract class MainViewModel : BaseViewModel() {
     abstract fun toggleDarkMode()
 }
 
-class MainViewModelImpl @Inject constructor(
+class MainViewModelImpl(
     private val themeDataStore: ThemeDataStore
 ) : MainViewModel() {
 

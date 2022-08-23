@@ -1,10 +1,9 @@
 package com.nikolaenko.core.dispatchers
 
-import com.nikolaenko.core.dispatchers.AppDispatchers
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
-class AppDispatchersImpl : com.nikolaenko.core.dispatchers.AppDispatchers {
+class AppDispatchersImpl : AppDispatchers {
 
     override val io: CoroutineDispatcher
         get() = Dispatchers.IO

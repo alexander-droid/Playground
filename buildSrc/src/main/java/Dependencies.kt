@@ -20,12 +20,10 @@ object Libs {
         const val navigationAnimation = "com.google.accompanist:accompanist-navigation-animation:$version"
     }
 
-    object Hilt {
-        const val version = "2.38.1"
-        const val plugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
-        const val android = "com.google.dagger:hilt-android:$version"
-        const val navigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
-        const val androidCompiler = "com.google.dagger:hilt-android-compiler:$version"
+    object Koin {
+        const val version = "3.2.0"
+        const val android = "io.insert-koin:koin-android:$version"
+        const val compose = "io.insert-koin:koin-androidx-compose:$version"
     }
 
     object Androidx {
@@ -72,10 +70,5 @@ object Libs {
         const val version = "3.19.4"
         const val pluginVersion = "0.8.12"
         const val javalite = "com.google.protobuf:protobuf-javalite:$version"
-    }
-
-    object Timber {
-        const val version = "5.0.1"
-        const val timber = "com.jakewharton.timber:timber:$version"
     }
 }

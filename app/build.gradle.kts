@@ -1,8 +1,6 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
-    kotlin("kapt")
 }
 
 android {
@@ -67,19 +65,10 @@ dependencies {
     implementation(Libs.Androidx.Compose.materialIconsExtended)
     implementation(Libs.Androidx.Compose.activityCompose)
 
-    implementation(Libs.Hilt.android)
-    implementation(Libs.Hilt.navigationCompose)
-    kapt(Libs.Hilt.androidCompiler)
+    implementation(Libs.Koin.android)
+    implementation(Libs.Koin.compose)
 
     implementation(Libs.Accompanist.insets)
     implementation(Libs.Accompanist.navigationAnimation)
     implementation(Libs.Accompanist.systemUiController)
-
-    implementation(Libs.Timber.timber)
-
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.1.1")
 }

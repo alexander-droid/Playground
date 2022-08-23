@@ -32,5 +32,4 @@ android {
 
 dependencies {
     implementation(Libs.Androidx.lifecycleViewModelKtx)
-    implementation(Libs.Hilt.android)
 }

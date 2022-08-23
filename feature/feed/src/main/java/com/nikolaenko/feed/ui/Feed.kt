@@ -5,24 +5,22 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.insets.statusBarsPadding
-import timber.log.Timber
+import com.nikolaenko.core.logger.Logger
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun Feed(navHostController: NavHostController, block: () -> Unit) {
-    Timber.tag("efegreg").d("Feed")
+    Logger.d("Feed")
 
-    val viewModel = viewModel<FeedViewModelImpl>()
+    val viewModel = getViewModel<FeedViewModel>()
 
     Surface(
         modifier = Modifier
             .statusBarsPadding()
             .fillMaxSize()
     ) {
-        Timber.tag("efegreg").d("Feed Text")
         Text(
             text = "Feed!"
         )

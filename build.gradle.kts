@@ -1,7 +1,7 @@
 buildscript {
 
     dependencies {
-        classpath(Libs.Hilt.plugin)
+
     }
 }
 
