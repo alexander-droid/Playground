@@ -2,11 +2,11 @@ package com.nikolaenko.settings.di.modules
 
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
-import com.nikolaenko.core.dispatchers.AppDispatchers
-import com.nikolaenko.core.utils.C
-import com.nikolaenko.settings.data.datastore.ThemeDataStoreImpl
-import com.nikolaenko.settings.data.datastore.ThemeSerializer
-import com.nikolaenko.settings.domain.datastore.ThemeDataStore
+import com.nikolaenko.core.data.datastore.ThemeDataStoreImpl
+import com.nikolaenko.core.data.serializer.ThemeSerializer
+import com.nikolaenko.core.domain.datastore.ThemeDataStore
+import com.nikolaenko.utils.dispatchers.AppDispatchers
+import com.nikolaenko.utils.utils.C
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import org.koin.android.ext.koin.androidContext

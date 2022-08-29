@@ -1,8 +1,8 @@
 package com.nikolaenko.playground
 
-import com.nikolaenko.core.viewmodel.BaseViewModel
-import com.nikolaenko.settings.domain.datastore.ThemeDataStore
-import com.nikolaenko.settings.domain.model.Theme
+import com.nikolaenko.core.domain.datastore.ThemeDataStore
+import com.nikolaenko.core.domain.datastore.UserSessionDataStore
+import com.nikolaenko.utils.viewmodel.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -10,14 +10,16 @@ abstract class MainViewModel : BaseViewModel() {
     abstract val state: StateFlow<State>
 
     data class State(
-        val isDarkTheme: Boolean = false
+        val isDarkTheme: Boolean? = null,
+        val isLoggedIn: Boolean? = null
     )
 
     abstract fun toggleDarkMode()
 }
 
 class MainViewModelImpl(
-    private val themeDataStore: ThemeDataStore
+    private val themeDataStore: ThemeDataStore,
+    private val userSessionDataStore: UserSessionDataStore
 ) : MainViewModel() {
 
     override val state = MutableStateFlow(State())
@@ -25,16 +27,27 @@ class MainViewModelImpl(
     init {
         launch {
             themeDataStore.flow.collect {
-                state.value = State(isDarkTheme = it.isDark)
+                state.value = state.value.copy(
+                    isDarkTheme = it.isDark
+                )
+            }
+        }
+
+        launch {
+            userSessionDataStore.flow.collect {
+                state.value = state.value.copy(
+                    isLoggedIn = it.isLoggedIn
+                )
             }
         }
     }
 
     override fun toggleDarkMode() {
         launch {
+            val isDarkTheme = state.value.isDarkTheme ?: return@launch
             themeDataStore.update(
-                Theme(
-                    isDark = !state.value.isDarkTheme
+                com.nikolaenko.core.domain.model.Theme(
+                    isDark = !isDarkTheme
                 )
             )
         }

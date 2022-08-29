@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace = "com.nikolaenko.profile"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
@@ -36,8 +37,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":coreUi"))
-    implementation(project(":core"))
+    implementation(project(":utilsUi"))
+    implementation(project(":utils"))
     api(project(":feature:profile:data"))
 
     implementation(Libs.Androidx.Compose.ui)

@@ -5,11 +5,10 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 import com.google.accompanist.insets.statusBarsPadding
 
 @Composable
-fun Settings(navHostController: NavHostController) {
+fun Settings() {
     Surface(
         modifier = Modifier.statusBarsPadding().fillMaxSize()
     ) {

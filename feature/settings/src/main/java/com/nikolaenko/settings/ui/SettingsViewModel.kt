@@ -1,6 +1,6 @@
 package com.nikolaenko.settings.ui
 
-import com.nikolaenko.core.viewmodel.BaseViewModel
+import com.nikolaenko.utils.viewmodel.BaseViewModel
 
 abstract class SettingsViewModel: BaseViewModel() {
 }

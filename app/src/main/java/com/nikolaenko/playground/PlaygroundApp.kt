@@ -2,6 +2,7 @@ package com.nikolaenko.playground
 
 import android.app.Application
 import com.nikolaenko.feed.di.feedModules
+import com.nikolaenko.auth.di.authModules
 import com.nikolaenko.playground.di.appModules
 import com.nikolaenko.profile.di.profileModules
 import com.nikolaenko.settings.di.settingsModules
@@ -16,7 +17,7 @@ class PlaygroundApp: Application() {
         startKoin{
             androidLogger()
             androidContext(this@PlaygroundApp)
-            modules(appModules + feedModules + profileModules + settingsModules)
+            modules(appModules + feedModules + profileModules + settingsModules + authModules)
         }
     }
 }

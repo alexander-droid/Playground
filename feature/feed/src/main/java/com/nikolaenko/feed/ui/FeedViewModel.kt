@@ -1,6 +1,6 @@
 package com.nikolaenko.feed.ui
 
-import com.nikolaenko.core.viewmodel.BaseViewModel
+import com.nikolaenko.utils.viewmodel.BaseViewModel
 
 abstract class FeedViewModel: BaseViewModel() {
 }

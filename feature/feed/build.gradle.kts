@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace = "com.nikolaenko.feed"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
@@ -36,8 +37,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":coreUi"))
-    implementation(project(":core"))
+    implementation(project(":utilsUi"))
+    implementation(project(":utils"))
     api(project(":feature:feed:data"))
 
     implementation(Libs.Androidx.Compose.ui)

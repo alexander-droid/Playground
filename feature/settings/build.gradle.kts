@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace = "com.nikolaenko.settings"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
@@ -36,8 +37,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":coreUi"))
-    implementation(project(":core"))
+    implementation(project(":utilsUi"))
+    implementation(project(":utils"))
+    implementation(project(":core:data"))
     api(project(":feature:settings:data"))
 
     implementation(Libs.Androidx.Compose.ui)

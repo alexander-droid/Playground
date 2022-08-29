@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import com.google.accompanist.insets.statusBarsPadding
 
 @Composable
-fun Profile(navHostController: NavHostController) {
+fun Profile() {
     Surface(
         modifier = Modifier.statusBarsPadding().fillMaxSize()
     ) {
