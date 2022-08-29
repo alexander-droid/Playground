@@ -2,6 +2,7 @@ package com.nikolaenko.playground
 
 import com.nikolaenko.core.domain.datastore.ThemeDataStore
 import com.nikolaenko.core.domain.datastore.UserSessionDataStore
+import com.nikolaenko.utils.logger.Logger
 import com.nikolaenko.utils.viewmodel.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -27,6 +28,7 @@ class MainViewModelImpl(
     init {
         launch {
             themeDataStore.flow.collect {
+                Logger.d("collect theme $it")
                 state.value = state.value.copy(
                     isDarkTheme = it.isDark
                 )
@@ -35,6 +37,7 @@ class MainViewModelImpl(
 
         launch {
             userSessionDataStore.flow.collect {
+                Logger.d("collect session $it")
                 state.value = state.value.copy(
                     isLoggedIn = it.isLoggedIn
                 )

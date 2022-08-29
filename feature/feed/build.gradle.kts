@@ -43,6 +43,7 @@ dependencies {
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.uiToolingPreview)
 
     implementation(Libs.Androidx.Navigation.navigationCompose)
 

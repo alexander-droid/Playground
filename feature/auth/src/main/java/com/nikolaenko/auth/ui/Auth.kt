@@ -1,29 +1,39 @@
 package com.nikolaenko.auth.ui
 
-import androidx.compose.runtime.Composable
-import androidx.navigation.compose.NavHost
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navigation
 import com.nikolaenko.auth.ui.forgot.ForgotPassword
 import com.nikolaenko.auth.ui.login.Login
 import com.nikolaenko.auth.ui.register.Register
 import com.nikolaenko.utils.logger.Logger
 
-@Composable
-fun Auth() {
-    val navController = rememberNavController()
-    NavHost(navController, startDestination = Screen.Login.route) {
-        Logger.d("Auth NavHost")
+fun NavGraphBuilder.AuthGraph(
+    navController: NavHostController,
+    onLoggedIn: () -> Unit
+) {
+    navigation(startDestination = Screen.Login.route, route = "auth") {
+        Logger.d("navigation Auth")
         composable(Screen.Login.route) {
-            Logger.d("composable Login")
-            Login()
+            Logger.d("composable Login ${LocalLifecycleOwner.current}")
+            Login(
+                onLoggedIn = onLoggedIn,
+                goToRegister = {
+                    navController.navigate(Screen.Register.route)
+                },
+                goToResetPassword = {
+                    navController.navigate(Screen.ForgotPassword.route)
+                }
+            )
         }
         composable(Screen.Register.route) {
-            Logger.d("composable Register")
+            Logger.d("composable Register ${LocalLifecycleOwner.current}")
             Register()
         }
         composable(Screen.ForgotPassword.route) {
-            Logger.d("composable ForgotPassword")
+            Logger.d("composable ForgotPassword ${LocalLifecycleOwner.current}")
             ForgotPassword()
         }
     }
