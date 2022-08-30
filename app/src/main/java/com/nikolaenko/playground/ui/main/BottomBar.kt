@@ -16,7 +16,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.insets.navigationBarsPadding
-import com.nikolaenko.utilsui.theme.PlaygroundTheme
+import com.nikolaenko.playground.core.ui.PlaygroundTheme
 
 @Composable
 fun BottomBar(navController: NavHostController, screens: List<TabScreen>) {

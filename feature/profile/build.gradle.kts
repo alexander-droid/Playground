@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nikolaenko.profile"
+    namespace = "com.nikolaenko.playground.profile"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
@@ -37,9 +37,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":utilsUi"))
-    implementation(project(":utils"))
-    api(project(":feature:profile:data"))
+    implementation(project(":core"))
+    implementation(project(":feature:profile:data"))
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)

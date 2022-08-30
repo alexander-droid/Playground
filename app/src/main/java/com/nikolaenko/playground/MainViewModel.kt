@@ -1,9 +1,10 @@
 package com.nikolaenko.playground
 
-import com.nikolaenko.core.domain.datastore.ThemeDataStore
-import com.nikolaenko.core.domain.datastore.UserSessionDataStore
-import com.nikolaenko.utils.logger.Logger
-import com.nikolaenko.utils.viewmodel.BaseViewModel
+import com.nikolaenko.playground.core.domain.datastore.ThemeDataStore
+import com.nikolaenko.playground.core.domain.datastore.UserSessionDataStore
+import com.nikolaenko.playground.core.domain.model.Theme
+import com.nikolaenko.playground.core.logger.Logger
+import com.nikolaenko.playground.core.viewmodel.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -49,7 +50,7 @@ class MainViewModelImpl(
         launch {
             val isDarkTheme = state.value.isDarkTheme ?: return@launch
             themeDataStore.update(
-                com.nikolaenko.core.domain.model.Theme(
+                Theme(
                     isDark = !isDarkTheme
                 )
             )

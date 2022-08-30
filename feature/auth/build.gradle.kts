@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nikolaenko.auth"
+    namespace = "com.nikolaenko.playground.auth"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
@@ -40,10 +40,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":utilsUi"))
-    implementation(project(":utils"))
-    implementation(project(":core:data"))
-    api(project(":feature:auth:data"))
+    implementation(project(":core"))
+    implementation(project(":feature:auth:data"))
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)

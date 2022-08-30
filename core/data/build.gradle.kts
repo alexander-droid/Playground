@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nikolaenko.core.data"
+    namespace = "com.nikolaenko.playground.core.data"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {

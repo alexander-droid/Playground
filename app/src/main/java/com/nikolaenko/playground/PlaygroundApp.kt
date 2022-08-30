@@ -1,23 +1,31 @@
 package com.nikolaenko.playground
 
 import android.app.Application
-import com.nikolaenko.feed.di.feedModules
-import com.nikolaenko.auth.di.authModules
+import com.nikolaenko.playground.auth.di.authModules
+import com.nikolaenko.playground.chat.di.chatModules
+import com.nikolaenko.playground.feed.di.feedModules
+import com.nikolaenko.playground.core.di.coreModules
 import com.nikolaenko.playground.di.appModules
-import com.nikolaenko.profile.di.profileModules
-import com.nikolaenko.settings.di.settingsModules
+import com.nikolaenko.playground.profile.di.profileModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class PlaygroundApp: Application() {
+class PlaygroundApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        startKoin{
+        startKoin {
             androidLogger()
             androidContext(this@PlaygroundApp)
-            modules(appModules + feedModules + profileModules + settingsModules + authModules)
+            modules(
+                appModules
+                        + coreModules
+                        + authModules
+                        + feedModules
+                        + profileModules
+                        + chatModules
+            )
         }
     }
 }

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nikolaenko.feed.data"
+    namespace = "com.nikolaenko.playground.feed.data"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {

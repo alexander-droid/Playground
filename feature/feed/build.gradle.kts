@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nikolaenko.feed"
+    namespace = "com.nikolaenko.playground.feed"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
@@ -37,9 +37,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":utilsUi"))
-    implementation(project(":utils"))
-    api(project(":feature:feed:data"))
+    implementation(project(":core"))
+    implementation(project(":feature:feed:data"))
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)

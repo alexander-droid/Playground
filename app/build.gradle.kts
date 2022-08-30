@@ -52,11 +52,9 @@ android {
 dependencies {
     implementation(project(":feature:feed"))
     implementation(project(":feature:profile"))
-    implementation(project(":feature:settings"))
+    implementation(project(":feature:chat"))
     implementation(project(":feature:auth"))
-    implementation(project(":utils"))
-    implementation(project(":utilsUi"))
-    implementation(project(":core:data"))
+    implementation(project(":core"))
 
     implementation(Libs.Androidx.coreKtx)
     implementation(Libs.Androidx.Navigation.navigationCompose)

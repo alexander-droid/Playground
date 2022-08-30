@@ -1,7 +1,7 @@
 package com.nikolaenko.playground.di
 
-import com.nikolaenko.utils.dispatchers.AppDispatchers
-import com.nikolaenko.utils.dispatchers.AppDispatchersImpl
+import com.nikolaenko.playground.core.domain.dispatchers.AppDispatchers
+import com.nikolaenko.playground.core.data.dispatchers.AppDispatchersImpl
 import org.koin.dsl.module
 
 val threadingModule = module {

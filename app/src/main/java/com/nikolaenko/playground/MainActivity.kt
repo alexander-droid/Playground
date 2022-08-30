@@ -11,10 +11,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.nikolaenko.auth.ui.AuthGraph
+import com.nikolaenko.playground.auth.ui.AuthGraph
 import com.nikolaenko.playground.ui.main.MainGraph
-import com.nikolaenko.utils.logger.Logger
-import com.nikolaenko.utilsui.theme.PlaygroundTheme
+import com.nikolaenko.playground.core.logger.Logger
+import com.nikolaenko.playground.core.ui.PlaygroundTheme
 import org.koin.androidx.compose.getViewModel
 
 class MainActivity : ComponentActivity() {
