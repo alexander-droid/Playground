@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="go_to_details">Go to details</string>
+    <string name="feed">Feed</string>
+    <string name="details">Details</string>
+</resources>

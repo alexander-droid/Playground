@@ -1,19 +1,27 @@
 package com.nikolaenko.playground.profile.ui
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import com.google.accompanist.insets.statusBarsPadding
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
+import androidx.navigation.navigation
+import com.nikolaenko.playground.profile.ui.profile.Profile
+import com.nikolaenko.playground.profile.ui.settings.Settings
 
-@Composable
-fun Profile() {
-    Surface(
-        modifier = Modifier.statusBarsPadding().fillMaxSize()
-    ) {
-        Text(
-            text = "Profile!"
-        )
+fun NavGraphBuilder.ProfileGraph(
+    navController: NavHostController,
+    route: String
+) {
+    navigation(startDestination = Screen.Profile.route, route = route) {
+        composable(Screen.Profile.route) {
+            Profile()
+        }
+        composable(Screen.Settings.route) {
+            Settings()
+        }
     }
+}
+
+internal sealed class Screen(val route: String) {
+    object Profile : Screen("profile")
+    object Settings : Screen("settings")
 }

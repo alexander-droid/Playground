@@ -9,7 +9,7 @@ import com.nikolaenko.playground.auth.ui.register.RegisterViewModelImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val viewModelModule = module {
+internal val viewModelModule = module {
     viewModel<LoginViewModel> { LoginViewModelImpl() }
     viewModel<RegisterViewModel> { RegisterViewModelImpl() }
     viewModel<ForgotPasswordViewModel> { ForgotPasswordViewModelImpl() }

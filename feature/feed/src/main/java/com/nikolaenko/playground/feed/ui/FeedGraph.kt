@@ -13,7 +13,11 @@ fun NavGraphBuilder.FeedGraph(
 ) {
     navigation(startDestination = Screen.Feed.route, route = route) {
         composable(Screen.Feed.route) {
-            Feed()
+            Feed(
+                goToDetails = {
+                    navController.navigate(Screen.PostDetails.route)
+                }
+            )
         }
         composable(Screen.PostDetails.route) {
             PostDetails()

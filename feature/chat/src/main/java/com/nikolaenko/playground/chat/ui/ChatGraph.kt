@@ -12,16 +12,20 @@ fun NavGraphBuilder.ChatGraph(
     route: String
 ) {
     navigation(startDestination = Screen.Contacts.route, route) {
+        composable(route = Screen.Contacts.route) {
+            Contacts(
+                goToMessages = {
+                    navController.navigate(Screen.Messages.route)
+                }
+            )
+        }
         composable(Screen.Messages.route) {
             Messages()
-        }
-        composable(route = Screen.Contacts.route) {
-            Contacts()
         }
     }
 }
 
 sealed class Screen(val route: String) {
-    object Messages : Screen("chat")
     object Contacts : Screen("contacts")
+    object Messages : Screen("chat")
 }

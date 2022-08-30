@@ -19,7 +19,10 @@ import com.google.accompanist.insets.navigationBarsPadding
 import com.nikolaenko.playground.core.ui.PlaygroundTheme
 
 @Composable
-fun BottomBar(navController: NavHostController, screens: List<TabScreen>) {
+fun BottomBar(
+    navController: NavHostController,
+    screens: List<TabScreen>
+) {
     BottomNavigation(
         modifier = Modifier.background(PlaygroundTheme.colors.surface).navigationBarsPadding(),
         backgroundColor = Color(0x00000000),

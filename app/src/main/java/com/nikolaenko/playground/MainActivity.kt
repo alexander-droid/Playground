@@ -8,13 +8,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.nikolaenko.playground.auth.ui.AuthGraph
-import com.nikolaenko.playground.ui.main.MainGraph
 import com.nikolaenko.playground.core.logger.Logger
 import com.nikolaenko.playground.core.ui.PlaygroundTheme
+import com.nikolaenko.playground.ui.main.Main
 import org.koin.androidx.compose.getViewModel
 
 class MainActivity : ComponentActivity() {
@@ -51,9 +52,9 @@ class MainActivity : ComponentActivity() {
                         Screen.Auth
                     }
                     NavHost(navController = navController, startDestination = startDestination.route) {
-                        Logger.d("NavHost Root")
                         AuthGraph(
                             navController = navController,
+                            route = Screen.Auth.route,
                             onLoggedIn = {
                                 navController.navigate(Screen.Main.route) {
                                         popUpTo(navController.graph.startDestinationId) {
@@ -62,7 +63,9 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         )
-                        MainGraph(navController = navController)
+                        composable(route = Screen.Main.route) {
+                            Main()
+                        }
                     }
                 }
             }

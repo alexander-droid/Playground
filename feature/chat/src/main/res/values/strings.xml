@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chat">Chat</string>
+    <string name="go_to_chat">Go to chat</string>
+    <string name="contacts">Contacts</string>
+</resources>

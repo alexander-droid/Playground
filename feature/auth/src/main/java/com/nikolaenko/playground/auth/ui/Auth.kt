@@ -12,9 +12,10 @@ import com.nikolaenko.playground.core.logger.Logger
 
 fun NavGraphBuilder.AuthGraph(
     navController: NavHostController,
+    route: String,
     onLoggedIn: () -> Unit
 ) {
-    navigation(startDestination = Screen.Login.route, route = "auth") {
+    navigation(startDestination = Screen.Login.route, route = route) {
         Logger.d("navigation Auth")
         composable(Screen.Login.route) {
             Logger.d("composable Login ${LocalLifecycleOwner.current}")

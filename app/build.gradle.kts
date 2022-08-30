@@ -64,6 +64,7 @@ dependencies {
     implementation(Libs.Androidx.Compose.uiToolingPreview)
     implementation(Libs.Androidx.Compose.materialIconsExtended)
     implementation(Libs.Androidx.Compose.activityCompose)
+    implementation(Libs.Androidx.Compose.constraintLayout)
 
     implementation(Libs.Koin.android)
     implementation(Libs.Koin.compose)

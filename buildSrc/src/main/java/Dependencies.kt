@@ -53,6 +53,7 @@ object Libs {
             const val materialIconsExtended = "androidx.compose.material:material-icons-extended:$version"
             const val activityCompose = "androidx.activity:activity-compose:1.5.0"
             const val material = "androidx.compose.material:material:1.3.0-alpha01"
+            const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
         }
 
         object Navigation {
