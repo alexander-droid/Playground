@@ -1,7 +1,7 @@
 package com.nikolaenko.playground
 
-import com.nikolaenko.playground.core.domain.datastore.ThemeDataStore
-import com.nikolaenko.playground.core.domain.datastore.UserSessionDataStore
+import com.nikolaenko.playground.core.domain.datastore.ThemeRepository
+import com.nikolaenko.playground.core.domain.datastore.UserSessionRepository
 import com.nikolaenko.playground.core.domain.model.Theme
 import com.nikolaenko.playground.core.logger.Logger
 import com.nikolaenko.playground.core.viewmodel.BaseViewModel
@@ -16,19 +16,19 @@ abstract class MainViewModel : BaseViewModel() {
         val isLoggedIn: Boolean? = null
     )
 
-    abstract fun toggleDarkMode()
+    abstract fun toggleDarkMode(isSystemInDarkTheme: Boolean)
 }
 
 class MainViewModelImpl(
-    private val themeDataStore: ThemeDataStore,
-    private val userSessionDataStore: UserSessionDataStore
+    private val themeRepository: ThemeRepository,
+    private val userSessionRepository: UserSessionRepository
 ) : MainViewModel() {
 
     override val state = MutableStateFlow(State())
 
     init {
         launch {
-            themeDataStore.flow.collect {
+            themeRepository.flow.collect {
                 Logger.d("collect theme $it")
                 state.value = state.value.copy(
                     isDarkTheme = it.isDark
@@ -37,7 +37,7 @@ class MainViewModelImpl(
         }
 
         launch {
-            userSessionDataStore.flow.collect {
+            userSessionRepository.flow.collect {
                 Logger.d("collect session $it")
                 state.value = state.value.copy(
                     isLoggedIn = it.isLoggedIn
@@ -46,10 +46,10 @@ class MainViewModelImpl(
         }
     }
 
-    override fun toggleDarkMode() {
+    override fun toggleDarkMode(isSystemInDarkTheme: Boolean) {
         launch {
-            val isDarkTheme = state.value.isDarkTheme ?: return@launch
-            themeDataStore.update(
+            val isDarkTheme = state.value.isDarkTheme ?: isSystemInDarkTheme
+            themeRepository.update(
                 Theme(
                     isDark = !isDarkTheme
                 )

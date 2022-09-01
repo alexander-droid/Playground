@@ -3,8 +3,11 @@ package com.nikolaenko.playground
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
@@ -24,52 +27,55 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         setContent {
-
             val viewModel = getViewModel<MainViewModel>()
 
-            val state = viewModel.state.collectAsState()
-            Logger.d("state ${state.value}")
+            val state by viewModel.state.collectAsState()
+            Logger.d("state $state")
             ProvideWindowInsets {
-                val isDarkTheme = state.value.isDarkTheme ?: return@ProvideWindowInsets
-                PlaygroundTheme(darkTheme = isDarkTheme) {
-
-                    val systemUiController = rememberSystemUiController()
-                    systemUiController.setSystemBarsColor(
-                        color = Color.Transparent,
-                        darkIcons = MaterialTheme.colors.isLight
-                    )
-                    systemUiController.setNavigationBarColor(
-                        color = Color.Transparent,
-                        darkIcons = MaterialTheme.colors.isLight,
-                        navigationBarContrastEnforced = false
-                    )
-
-                    val isLoggedIn = state.value.isLoggedIn ?: return@PlaygroundTheme
-                    val navController = rememberNavController()
+                PlaygroundTheme(darkTheme = state.isDarkTheme ?: isSystemInDarkTheme()) {
+                    setBarColors()
+                    val isLoggedIn = state.isLoggedIn ?: return@PlaygroundTheme
                     val startDestination = if (isLoggedIn) {
                         Screen.Main
                     } else {
                         Screen.Auth
                     }
-                    NavHost(navController = navController, startDestination = startDestination.route) {
-                        AuthGraph(
-                            navController = navController,
-                            route = Screen.Auth.route,
-                            onLoggedIn = {
-                                navController.navigate(Screen.Main.route) {
+                    val navController = rememberNavController()
+                    Surface {
+                        NavHost(navController = navController, startDestination = startDestination.route) {
+                            AuthGraph(
+                                navController = navController,
+                                route = Screen.Auth.route,
+                                onLoggedIn = {
+                                    navController.navigate(Screen.Main.route) {
                                         popUpTo(navController.graph.startDestinationId) {
                                             inclusive = true
                                         }
+                                    }
                                 }
+                            )
+                            composable(route = Screen.Main.route) {
+                                Main(viewModel)
                             }
-                        )
-                        composable(route = Screen.Main.route) {
-                            Main()
                         }
                     }
                 }
             }
         }
+    }
+
+    @Composable
+    private fun setBarColors() {
+        val systemUiController = rememberSystemUiController()
+        systemUiController.setSystemBarsColor(
+            color = Color.Transparent,
+            darkIcons = PlaygroundTheme.colors.isLight
+        )
+        systemUiController.setNavigationBarColor(
+            color = Color.Transparent,
+            darkIcons = PlaygroundTheme.colors.isLight,
+            navigationBarContrastEnforced = false
+        )
     }
 }
 

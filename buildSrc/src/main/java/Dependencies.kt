@@ -30,7 +30,7 @@ object Libs {
 
         const val lifecycleVersion = "2.6.0-alpha01"
 
-        const val appcompat = "androidx.appcompat:appcompat:1.4.1"
+        const val material = "com.google.android.material:material:1.6.1"
         const val coreKtx = "androidx.core:core-ktx:1.8.0"
 
         // ViewModel

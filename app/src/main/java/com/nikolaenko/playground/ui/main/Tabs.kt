@@ -1,13 +1,12 @@
 package com.nikolaenko.playground.ui.main
 
 import androidx.annotation.StringRes
-import androidx.compose.material.Surface
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.compose.NavHost
@@ -22,7 +21,7 @@ fun Tabs() {
     val navController = rememberNavController()
     ConstraintLayout {
         val (containerRef, bottomRef) = createRefs()
-        Surface(
+        Column(
             modifier = Modifier
                 .constrainAs(containerRef) {
                     top.linkTo(parent.top)
@@ -30,7 +29,6 @@ fun Tabs() {
                     end.linkTo(parent.end)
                     bottom.linkTo(bottomRef.top)
                 },
-            color = Color.DarkGray
         ) {
             NavHost(
                 navController = navController,
@@ -46,7 +44,7 @@ fun Tabs() {
                 )
             }
         }
-        Surface(
+        Column(
             modifier = Modifier
                 .constrainAs(bottomRef) {
                     start.linkTo(parent.start)

@@ -1,13 +1,14 @@
-package com.nikolaenko.playground.core.data.datastore
+package com.nikolaenko.playground.core.data.repository
 
+import UserSessionProto
 import androidx.datastore.core.DataStore
-import com.nikolaenko.playground.core.domain.datastore.UserSessionDataStore
+import com.nikolaenko.playground.core.domain.datastore.UserSessionRepository
 import com.nikolaenko.playground.core.domain.model.UserSession
 import kotlinx.coroutines.flow.map
 
-class UserSessionDataStoreImpl(
+class UserSessionRepositoryImpl(
     private val dataStore: DataStore<UserSessionProto.SessionData>
-): UserSessionDataStore {
+): UserSessionRepository {
 
     override val flow = dataStore.data.map {
         UserSession(isLoggedIn = it.isLoggedIn)

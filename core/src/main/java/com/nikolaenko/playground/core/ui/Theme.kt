@@ -8,24 +8,25 @@ import androidx.compose.ui.unit.dp
 import com.nikolaenko.playground.core.ui.attr.*
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = DarkColors.primary,
+    primaryVariant = DarkColors.primaryVariant,
+    secondary = DarkColors.secondary,
+    onPrimary = DarkColors.onPrimary,
+    background = DarkColors.background,
+    onBackground = DarkColors.onBackground,
+    surface = DarkColors.surface,
+    onSurface = DarkColors.onSurface
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    primary = LightColors.primary,
+    primaryVariant = LightColors.primaryVariant,
+    secondary = LightColors.secondary,
+    onPrimary = LightColors.onPrimary,
+    background = LightColors.background,
+    onBackground = LightColors.onBackground,
+    surface = LightColors.surface,
+    onSurface = LightColors.onSurface
 )
 
 @Composable
