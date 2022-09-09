@@ -10,6 +10,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nikolaenko.playground.MainViewModel
+import com.nikolaenko.playground.chat.ui.ChatGraph
+import com.nikolaenko.playground.feed.ui.FeedGraph
 import com.nikolaenko.playground.profile.ui.ProfileGraph
 import kotlinx.coroutines.launch
 
@@ -27,10 +29,23 @@ fun Main(viewModel: MainViewModel) {
                     viewModel.toggleDarkMode(isSystemInDarkTheme)
                 },
                 goToProfile = {
-                    scope.launch {
-                        drawerState.close()
-                    }
+                    scope.launch { drawerState.close() }
                     navController.navigate(Screen.Profile.route) {
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    }
+                },
+                goToChat = {
+                    scope.launch { drawerState.close() }
+                    navController.navigate(Screen.Chat.route) {
+                        popUpTo(navController.graph.startDestinationId)
+                        launchSingleTop = true
+                    }
+                },
+                goToFeed = {
+                    scope.launch { drawerState.close() }
+                    navController.navigate(Screen.Feed.route) {
+                        popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
                     }
                 }
@@ -45,6 +60,8 @@ fun Main(viewModel: MainViewModel) {
                     Tabs()
                 }
                 ProfileGraph(navController = navController, route = Screen.Profile.route)
+                ChatGraph(navController = navController, route = Screen.Chat.route)
+                FeedGraph(navController = navController, route = Screen.Feed.route)
             }
         }
     )
@@ -53,4 +70,6 @@ fun Main(viewModel: MainViewModel) {
 sealed class Screen(val route: String) {
     object Tabs : Screen("tabs")
     object Profile : Screen("profile_graph")
+    object Chat : Screen("chat_graph")
+    object Feed : Screen("feed_graph")
 }

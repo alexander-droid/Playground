@@ -3,6 +3,7 @@ package com.nikolaenko.playground.ui.main
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AreaChart
 import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
@@ -10,15 +11,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nikolaenko.playground.R
-import com.nikolaenko.playground.chat.ui.ChatGraph
-import com.nikolaenko.playground.feed.ui.FeedGraph
+import com.nikolaenko.playground.ui.tab1.Tab1
+import com.nikolaenko.playground.ui.tab2.Tab2
+import com.nikolaenko.playground.ui.tab3.Tab3
 
 @Composable
 fun Tabs() {
-    val screens = listOf(TabScreen.Feed, TabScreen.Chat)
+    val screens = listOf(TabScreen.Tab1, TabScreen.Tab2, TabScreen.Tab3)
     val navController = rememberNavController()
+
     ConstraintLayout {
         val (containerRef, bottomRef) = createRefs()
         Column(
@@ -32,16 +36,17 @@ fun Tabs() {
         ) {
             NavHost(
                 navController = navController,
-                startDestination = TabScreen.Feed.route
+                startDestination = TabScreen.Tab1.route
             ) {
-                FeedGraph(
-                    navController = navController,
-                    route = TabScreen.Feed.route
-                )
-                ChatGraph(
-                    navController = navController,
-                    route = TabScreen.Chat.route
-                )
+                composable(TabScreen.Tab1.route) {
+                    Tab1()
+                }
+                composable(TabScreen.Tab2.route) {
+                    Tab2()
+                }
+                composable(TabScreen.Tab3.route) {
+                    Tab3()
+                }
             }
         }
         Column(
@@ -58,6 +63,7 @@ fun Tabs() {
 }
 
 sealed class TabScreen(val route: String, val image: ImageVector, @StringRes val titleId: Int) {
-    object Feed : TabScreen("feed_graph", Icons.Filled.List, R.string.bottom_tab_feed)
-    object Chat : TabScreen("chat_graph", Icons.Filled.Chat, R.string.bottom_tab_chat)
+    object Tab1 : TabScreen("tab1", Icons.Filled.List, R.string.tab1)
+    object Tab2 : TabScreen("tab2", Icons.Filled.Chat, R.string.tab2)
+    object Tab3 : TabScreen("tab3", Icons.Filled.AreaChart, R.string.tab3)
 }

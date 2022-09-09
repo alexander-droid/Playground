@@ -18,7 +18,9 @@ import com.nikolaenko.playground.R
 @Composable
 fun DrawerContent(
     onThemeChanged: () -> Unit,
-    goToProfile: () -> Unit
+    goToProfile: () -> Unit,
+    goToChat: () -> Unit,
+    goToFeed: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -36,6 +38,18 @@ fun DrawerContent(
             modifier = Modifier.align(Alignment.End)
         ) {
             Text(text = stringResource(id = R.string.go_to_profile))
+        }
+        TextButton(
+            onClick = goToChat,
+            modifier = Modifier.align(Alignment.End)
+        ) {
+            Text(text = stringResource(id = R.string.go_to_chat))
+        }
+        TextButton(
+            onClick = goToFeed,
+            modifier = Modifier.align(Alignment.End)
+        ) {
+            Text(text = stringResource(id = R.string.go_to_feed))
         }
     }
 }
