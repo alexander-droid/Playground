@@ -2,10 +2,10 @@ package com.nikolaenko.playground.chat.ui
 
 import com.nikolaenko.playground.core.viewmodel.BaseViewModel
 
-abstract class ChatViewModel: BaseViewModel() {
+internal abstract class ChatViewModel: BaseViewModel() {
 }
 
-class ChatViewModelImpl: ChatViewModel() {
+internal class ChatViewModelImpl: ChatViewModel() {
 
     init {
 

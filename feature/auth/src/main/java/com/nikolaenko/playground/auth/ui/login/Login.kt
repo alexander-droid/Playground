@@ -20,7 +20,7 @@ import com.nikolaenko.playground.auth.R
 import com.nikolaenko.playground.core.logger.Logger
 
 @Composable
-fun Login(
+internal fun Login(
     onLoggedIn: () -> Unit,
     goToRegister: () -> Unit,
     goToResetPassword: () -> Unit
@@ -75,6 +75,6 @@ fun Login(
 
 @Preview
 @Composable
-fun LoginPreview() {
+internal fun LoginPreview() {
     Login({}, {}, {})
 }

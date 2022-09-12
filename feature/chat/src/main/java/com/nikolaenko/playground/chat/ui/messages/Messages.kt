@@ -12,7 +12,7 @@ import androidx.compose.ui.res.stringResource
 import com.nikolaenko.playground.chat.R
 
 @Composable
-fun Messages() {
+internal fun Messages() {
     Column(
         modifier = Modifier.fillMaxWidth().fillMaxHeight(),
         verticalArrangement = Arrangement.Center,

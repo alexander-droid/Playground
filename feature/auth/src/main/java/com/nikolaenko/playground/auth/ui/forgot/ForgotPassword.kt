@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import com.google.accompanist.insets.statusBarsPadding
 
 @Composable
-fun ForgotPassword() {
+internal fun ForgotPassword() {
     Column(
         modifier = Modifier.statusBarsPadding().fillMaxSize()
     ) {

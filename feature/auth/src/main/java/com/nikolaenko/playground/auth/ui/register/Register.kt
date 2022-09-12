@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import com.google.accompanist.insets.statusBarsPadding
 
 @Composable
-fun Register() {
+internal fun Register() {
     Column(
         modifier = Modifier.statusBarsPadding().fillMaxSize()
     ) {

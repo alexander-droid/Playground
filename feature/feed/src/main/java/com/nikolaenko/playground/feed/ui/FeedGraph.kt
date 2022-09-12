@@ -25,7 +25,7 @@ fun NavGraphBuilder.FeedGraph(
     }
 }
 
-sealed class Screen(val route: String) {
+internal sealed class Screen(val route: String) {
     object Feed : Screen("feed")
     object PostDetails : Screen("post_details")
 }

@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import com.nikolaenko.playground.chat.R
 
 @Composable
-fun Contacts(
+internal fun Contacts(
     goToMessages: () -> Unit
 ) {
     Column(

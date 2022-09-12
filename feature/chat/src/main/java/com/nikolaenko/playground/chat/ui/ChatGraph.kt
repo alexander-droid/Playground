@@ -25,7 +25,7 @@ fun NavGraphBuilder.ChatGraph(
     }
 }
 
-sealed class Screen(val route: String) {
+internal sealed class Screen(val route: String) {
     object Contacts : Screen("contacts")
     object Messages : Screen("chat")
 }

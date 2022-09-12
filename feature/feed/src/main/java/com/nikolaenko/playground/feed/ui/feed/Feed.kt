@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import com.nikolaenko.playground.feed.R
 
 @Composable
-fun Feed(
+internal fun Feed(
     goToDetails: () -> Unit
 ) {
     Column(

@@ -12,7 +12,7 @@ import androidx.compose.ui.res.stringResource
 import com.nikolaenko.playground.feed.R
 
 @Composable
-fun PostDetails() {
+internal fun PostDetails() {
     Column(
         modifier = Modifier.fillMaxWidth().fillMaxHeight(),
         verticalArrangement = Arrangement.Center,
