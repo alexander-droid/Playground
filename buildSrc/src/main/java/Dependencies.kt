@@ -32,7 +32,7 @@ object Libs {
 
         const val material = "com.google.android.material:material:1.6.1"
         const val coreKtx = "androidx.core:core-ktx:1.8.0"
-
+        const val splash = "androidx.core:core-splashscreen:1.0.0-beta02"
         // ViewModel
         const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
         // ViewModel utilities for Compose

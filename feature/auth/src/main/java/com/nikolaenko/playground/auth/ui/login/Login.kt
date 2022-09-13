@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -18,6 +16,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.nikolaenko.playground.auth.R
 import com.nikolaenko.playground.core.logger.Logger
+import com.nikolaenko.playground.core.ui.AppButton
 
 @Composable
 internal fun Login(
@@ -61,15 +60,9 @@ internal fun Login(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Button(onClick = onLoggedIn) {
-            Text(text = stringResource(id = R.string.login))
-        }
-        Button(onClick = goToRegister) {
-            Text(text = stringResource(id = R.string.register))
-        }
-        Button(onClick = goToResetPassword) {
-            Text(text = stringResource(id = R.string.forgot_password))
-        }
+        AppButton(onClick = onLoggedIn, text = stringResource(id = R.string.login))
+        AppButton(onClick = goToRegister, text = stringResource(id = R.string.register))
+        AppButton(onClick = goToResetPassword, text = stringResource(id = R.string.forgot_password))
     }
 }
 

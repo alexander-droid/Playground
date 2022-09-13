@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
+import androidx.core.splashscreen.SplashScreen
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -23,7 +25,10 @@ import org.koin.androidx.compose.getViewModel
 
 class MainActivity : ComponentActivity() {
 
+    private var splash: SplashScreen? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        splash = installSplashScreen()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         setContent {
@@ -31,6 +36,7 @@ class MainActivity : ComponentActivity() {
 
             val state by viewModel.state.collectAsState()
             Logger.d("state $state")
+            splash?.setKeepOnScreenCondition { state.isLoggedIn == null }
             ProvideWindowInsets {
                 PlaygroundTheme(darkTheme = state.isDarkTheme ?: isSystemInDarkTheme()) {
                     setBarColors()

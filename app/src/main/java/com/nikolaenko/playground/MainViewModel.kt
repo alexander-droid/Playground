@@ -40,7 +40,7 @@ class MainViewModelImpl(
             userSessionRepository.flow.collect {
                 Logger.d("collect session $it")
                 state.value = state.value.copy(
-                    isLoggedIn = it.isLoggedIn
+                    isLoggedIn = true //TODO
                 )
             }
         }

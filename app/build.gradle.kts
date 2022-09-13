@@ -59,6 +59,7 @@ dependencies {
     implementation(Libs.Androidx.coreKtx)
     implementation(Libs.Androidx.Navigation.navigationCompose)
     implementation(Libs.Androidx.material)
+    implementation(Libs.Androidx.splash)
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
