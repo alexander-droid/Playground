@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -79,12 +79,10 @@ class MainActivity : ComponentActivity() {
     private fun ApplyBarColors() {
         val systemUiController = rememberSystemUiController()
         systemUiController.setSystemBarsColor(
-            color = Color.Transparent,
-            darkIcons = PlaygroundTheme.colors.isLight
+            color = Color.Transparent
         )
         systemUiController.setNavigationBarColor(
             color = Color.Transparent,
-            darkIcons = PlaygroundTheme.colors.isLight,
             navigationBarContrastEnforced = false
         )
     }

@@ -50,11 +50,15 @@ object Libs {
 
         object Compose {
             const val version = "1.4.0-alpha02"
+            const val materialVersion = "1.1.0-alpha04"
             const val ui = "androidx.compose.ui:ui:$version"
             const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
             const val materialIconsExtended = "androidx.compose.material:material-icons-extended:$version"
             const val activityCompose = "androidx.activity:activity-compose:1.5.0"
-            const val material = "androidx.compose.material:material:1.3.0-alpha01"
+            const val material = "androidx.compose.material3:material3:$materialVersion"
+            const val drawer = "androidx.drawerlayout:drawerlayout:1.1.1"
+            const val materialRipple = "androidx.compose.material:material-ripple:$version"
+            const val materialWindowSize = "aandroidx.compose.material3:material3-window-size-class:$materialVersion"
             const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
         }
 

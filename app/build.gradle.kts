@@ -67,6 +67,7 @@ dependencies {
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.drawer)
     implementation(Libs.Androidx.Compose.uiToolingPreview)
     implementation(Libs.Androidx.Compose.materialIconsExtended)
     implementation(Libs.Androidx.Compose.activityCompose)
