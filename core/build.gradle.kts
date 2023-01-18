@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -48,6 +49,6 @@ dependencies {
 
     implementation(Libs.Accompanist.insets)
 
-    implementation(Libs.Koin.android)
-    implementation(Libs.Koin.compose)
+    implementation(Libs.Hilt.android)
+    kapt(Libs.Hilt.androidCompiler)
 }

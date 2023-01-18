@@ -9,4 +9,5 @@
     <string name="bottom_tab_chart">Chart</string>
     <string name="go_to_chat">Go to chat</string>
     <string name="go_to_feed">Go to feed</string>
+    <string name="go_to_questionnaire">Go to questionnaire</string>
 </resources>

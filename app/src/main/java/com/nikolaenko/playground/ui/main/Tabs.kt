@@ -2,6 +2,7 @@ package com.nikolaenko.playground.ui.main
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AreaChart
 import androidx.compose.material.icons.filled.Chat
@@ -14,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nikolaenko.playground.R
+import com.nikolaenko.playground.SlideInFromBottom
 import com.nikolaenko.playground.ui.tab1.Tab1
 import com.nikolaenko.playground.ui.tab2.Tab2
 import com.nikolaenko.playground.ui.tab3.Tab3
@@ -23,7 +25,7 @@ fun Tabs() {
     val screens = listOf(TabScreen.Tab1, TabScreen.Tab2, TabScreen.Tab3)
     val navController = rememberNavController()
 
-    ConstraintLayout {
+    ConstraintLayout(modifier = Modifier.fillMaxSize()) {
         val (containerRef, bottomRef) = createRefs()
         Column(
             modifier = Modifier
@@ -49,7 +51,7 @@ fun Tabs() {
                 }
             }
         }
-        Column(
+        SlideInFromBottom(
             modifier = Modifier
                 .constrainAs(bottomRef) {
                     start.linkTo(parent.start)

@@ -12,34 +12,34 @@ import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.nikolaenko.playground.auth.ui.AuthGraph
-import com.nikolaenko.playground.core.logger.Logger
 import com.nikolaenko.playground.core.ui.PlaygroundTheme
 import com.nikolaenko.playground.ui.main.Main
-import org.koin.androidx.compose.getViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private var splash: SplashScreen? = null
+    private lateinit var splash: SplashScreen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         splash = installSplashScreen()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         setContent {
-            val viewModel = getViewModel<MainViewModel>()
+            val viewModel = hiltViewModel<MainViewModelImpl>()
 
             val state by viewModel.state.collectAsState()
-            Logger.d("state $state")
-            splash?.setKeepOnScreenCondition { state.isLoggedIn == null }
             ProvideWindowInsets {
                 PlaygroundTheme(darkTheme = state.isDarkTheme ?: isSystemInDarkTheme()) {
-                    setBarColors()
+                    ApplyBarColors()
+                    splash.setKeepOnScreenCondition { state.isLoggedIn == null }
                     val isLoggedIn = state.isLoggedIn ?: return@PlaygroundTheme
                     val startDestination = if (isLoggedIn) {
                         Screen.Main
@@ -61,7 +61,12 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                             composable(route = Screen.Main.route) {
-                                Main(viewModel)
+                                val isSystemInDarkTheme = isSystemInDarkTheme()
+                                Main(
+                                    onThemeChanged = {
+                                        viewModel.toggleDarkMode(isSystemInDarkTheme)
+                                    }
+                                )
                             }
                         }
                     }
@@ -71,7 +76,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun setBarColors() {
+    private fun ApplyBarColors() {
         val systemUiController = rememberSystemUiController()
         systemUiController.setSystemBarsColor(
             color = Color.Transparent,

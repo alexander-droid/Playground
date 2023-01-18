@@ -1,6 +1,5 @@
 package com.nikolaenko.playground.auth.ui
 
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -8,7 +7,6 @@ import androidx.navigation.navigation
 import com.nikolaenko.playground.auth.ui.forgot.ForgotPassword
 import com.nikolaenko.playground.auth.ui.login.Login
 import com.nikolaenko.playground.auth.ui.register.Register
-import com.nikolaenko.playground.core.logger.Logger
 
 fun NavGraphBuilder.AuthGraph(
     navController: NavHostController,
@@ -16,9 +14,7 @@ fun NavGraphBuilder.AuthGraph(
     onLoggedIn: () -> Unit
 ) {
     navigation(startDestination = Screen.Login.route, route = route) {
-        Logger.d("navigation Auth")
         composable(Screen.Login.route) {
-            Logger.d("composable Login ${LocalLifecycleOwner.current}")
             Login(
                 onLoggedIn = onLoggedIn,
                 goToRegister = {
@@ -30,11 +26,9 @@ fun NavGraphBuilder.AuthGraph(
             )
         }
         composable(Screen.Register.route) {
-            Logger.d("composable Register ${LocalLifecycleOwner.current}")
             Register()
         }
         composable(Screen.ForgotPassword.route) {
-            Logger.d("composable ForgotPassword ${LocalLifecycleOwner.current}")
             ForgotPassword()
         }
     }

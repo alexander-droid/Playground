@@ -20,7 +20,8 @@ fun DrawerContent(
     onThemeChanged: () -> Unit,
     goToProfile: () -> Unit,
     goToChat: () -> Unit,
-    goToFeed: () -> Unit
+    goToFeed: () -> Unit,
+    goToQuestionnaire: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -50,6 +51,12 @@ fun DrawerContent(
             modifier = Modifier.align(Alignment.End)
         ) {
             Text(text = stringResource(id = R.string.go_to_feed))
+        }
+        TextButton(
+            onClick = goToQuestionnaire,
+            modifier = Modifier.align(Alignment.End)
+        ) {
+            Text(text = stringResource(id = R.string.go_to_questionnaire))
         }
     }
 }

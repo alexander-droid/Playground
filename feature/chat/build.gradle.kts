@@ -48,8 +48,5 @@ dependencies {
 
     implementation(Libs.Accompanist.insets)
 
-    implementation(Libs.Koin.android)
-    implementation(Libs.Koin.compose)
-
     implementation(Libs.Androidx.DataStore.dataStore)
 }

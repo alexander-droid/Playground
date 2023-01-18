@@ -5,12 +5,12 @@ object Libs {
     const val compileSdkVersion = 33
 
     object Gradle {
-        const val version = "7.4.0-alpha10"
+        const val version = "8.0.0-alpha10"
     }
 
     object Kotlin {
-        const val version = "1.6.21"
-        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.1"
+        const val version = "1.7.21"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4"
     }
 
     object Accompanist {
@@ -20,10 +20,12 @@ object Libs {
         const val navigationAnimation = "com.google.accompanist:accompanist-navigation-animation:$version"
     }
 
-    object Koin {
-        const val version = "3.2.0"
-        const val android = "io.insert-koin:koin-android:$version"
-        const val compose = "io.insert-koin:koin-androidx-compose:$version"
+    object Hilt {
+        const val version = "2.44"
+        const val android = "com.google.dagger:hilt-android:$version"
+        const val androidCompiler = "com.google.dagger:hilt-android-compiler:$version"
+        const val androidExtCompiler = "androidx.hilt:hilt-compiler:1.0.0"
+        const val navigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
     }
 
     object Androidx {
@@ -47,7 +49,7 @@ object Libs {
         const val lifecycleProcess = "androidx.lifecycle:lifecycle-process:$lifecycleVersion"
 
         object Compose {
-            const val version = "1.2.0-beta01"
+            const val version = "1.4.0-alpha02"
             const val ui = "androidx.compose.ui:ui:$version"
             const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
             const val materialIconsExtended = "androidx.compose.material:material-icons-extended:$version"
@@ -57,12 +59,12 @@ object Libs {
         }
 
         object Navigation {
-            const val version = "2.5.0-alpha03"
+            const val version = "2.6.0-alpha04"
             const val navigationCompose = "androidx.navigation:navigation-compose:$version"
         }
 
         object DataStore {
-            const val version = "1.0.0"
+            const val version = "1.1.0-alpha01"
             const val dataStore = "androidx.datastore:datastore:$version"
         }
     }

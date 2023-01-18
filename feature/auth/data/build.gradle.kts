@@ -1,5 +1,3 @@
-import com.google.protobuf.gradle.*
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -7,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nikolaenko.auth.data"
+    namespace = "com.nikolaenko.playground.auth.data"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {

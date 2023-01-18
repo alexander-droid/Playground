@@ -3,10 +3,11 @@ package com.nikolaenko.playground
 import com.nikolaenko.playground.core.domain.datastore.ThemeRepository
 import com.nikolaenko.playground.core.domain.datastore.UserSessionRepository
 import com.nikolaenko.playground.core.domain.model.Theme
-import com.nikolaenko.playground.core.logger.Logger
 import com.nikolaenko.playground.core.viewmodel.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
 abstract class MainViewModel : BaseViewModel() {
     abstract val state: StateFlow<State>
@@ -19,17 +20,17 @@ abstract class MainViewModel : BaseViewModel() {
     abstract fun toggleDarkMode(isSystemInDarkTheme: Boolean)
 }
 
-class MainViewModelImpl(
+@HiltViewModel
+class MainViewModelImpl @Inject constructor(
     private val themeRepository: ThemeRepository,
     private val userSessionRepository: UserSessionRepository
-) : MainViewModel() {
+): MainViewModel() {
 
     override val state = MutableStateFlow(State())
 
     init {
         launch {
             themeRepository.flow.collect {
-                Logger.d("collect theme $it")
                 state.value = state.value.copy(
                     isDarkTheme = it.isDark
                 )
@@ -38,7 +39,6 @@ class MainViewModelImpl(
 
         launch {
             userSessionRepository.flow.collect {
-                Logger.d("collect session $it")
                 state.value = state.value.copy(
                     isLoggedIn = true //TODO
                 )
@@ -50,9 +50,7 @@ class MainViewModelImpl(
         launch {
             val isDarkTheme = state.value.isDarkTheme ?: isSystemInDarkTheme
             themeRepository.update(
-                Theme(
-                    isDark = !isDarkTheme
-                )
+                Theme(isDark = !isDarkTheme)
             )
         }
     }

@@ -1,9 +1,12 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 }
 
 android {
+    namespace = "com.nikolaenko.playground"
     compileSdk = Libs.compileSdkVersion
 
     defaultConfig {
@@ -54,6 +57,7 @@ dependencies {
     implementation(project(":feature:profile"))
     implementation(project(":feature:chat"))
     implementation(project(":feature:auth"))
+    implementation(project(":feature:questionnaire"))
     implementation(project(":core"))
 
     implementation(Libs.Androidx.coreKtx)
@@ -68,8 +72,10 @@ dependencies {
     implementation(Libs.Androidx.Compose.activityCompose)
     implementation(Libs.Androidx.Compose.constraintLayout)
 
-    implementation(Libs.Koin.android)
-    implementation(Libs.Koin.compose)
+    implementation(Libs.Hilt.android)
+    implementation(Libs.Hilt.navigationCompose)
+    kapt(Libs.Hilt.androidCompiler)
+    kapt(Libs.Hilt.androidExtCompiler)
 
     implementation(Libs.Accompanist.insets)
     implementation(Libs.Accompanist.navigationAnimation)

@@ -47,7 +47,4 @@ dependencies {
     implementation(Libs.Androidx.Navigation.navigationCompose)
 
     implementation(Libs.Accompanist.insets)
-
-    implementation(Libs.Koin.android)
-    implementation(Libs.Koin.compose)
 }

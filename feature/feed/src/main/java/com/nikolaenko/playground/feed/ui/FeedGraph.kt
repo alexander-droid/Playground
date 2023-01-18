@@ -7,6 +7,7 @@ import androidx.navigation.navigation
 import com.nikolaenko.playground.feed.ui.details.PostDetails
 import com.nikolaenko.playground.feed.ui.feed.Feed
 
+@Suppress("FunctionName")
 fun NavGraphBuilder.FeedGraph(
     navController: NavHostController,
     route: String
