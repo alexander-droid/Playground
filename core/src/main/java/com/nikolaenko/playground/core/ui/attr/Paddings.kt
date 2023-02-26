@@ -7,10 +7,11 @@ import androidx.compose.ui.unit.dp
 
 @Immutable
 data class Paddings(
-    val defaultPadding: Dp = 16.dp,
-    val tinyPadding: Dp = 4.dp,
-    val smallPadding: Dp = 8.dp,
-    val largePadding: Dp = 24.dp
+    val default: Dp = 16.dp,
+    val tiny: Dp = 4.dp,
+    val small: Dp = 8.dp,
+    val large: Dp = 24.dp,
+    val xlarge: Dp = 28.dp
 )
 
-internal val LocalPaddings = staticCompositionLocalOf { Paddings() }
+val LocalPaddings = staticCompositionLocalOf { Paddings() }

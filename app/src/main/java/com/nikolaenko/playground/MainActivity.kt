@@ -16,7 +16,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.nikolaenko.playground.auth.ui.AuthGraph
 import com.nikolaenko.playground.core.ui.PlaygroundTheme
@@ -36,38 +35,36 @@ class MainActivity : ComponentActivity() {
             val viewModel = hiltViewModel<MainViewModelImpl>()
 
             val state by viewModel.state.collectAsState()
-            ProvideWindowInsets {
-                PlaygroundTheme(darkTheme = state.isDarkTheme ?: isSystemInDarkTheme()) {
-                    ApplyBarColors()
-                    splash.setKeepOnScreenCondition { state.isLoggedIn == null }
-                    val isLoggedIn = state.isLoggedIn ?: return@PlaygroundTheme
-                    val startDestination = if (isLoggedIn) {
-                        Screen.Main
-                    } else {
-                        Screen.Auth
-                    }
-                    val navController = rememberNavController()
-                    Surface {
-                        NavHost(navController = navController, startDestination = startDestination.route) {
-                            AuthGraph(
-                                navController = navController,
-                                route = Screen.Auth.route,
-                                onLoggedIn = {
-                                    navController.navigate(Screen.Main.route) {
-                                        popUpTo(navController.graph.startDestinationId) {
-                                            inclusive = true
-                                        }
+            PlaygroundTheme {
+                ApplyBarColors()
+                splash.setKeepOnScreenCondition { state.isLoggedIn == null }
+                val isLoggedIn = state.isLoggedIn ?: return@PlaygroundTheme
+                val startDestination = if (isLoggedIn) {
+                    Screen.Main
+                } else {
+                    Screen.Auth
+                }
+                val navController = rememberNavController()
+                Surface {
+                    NavHost(navController = navController, startDestination = startDestination.route) {
+                        AuthGraph(
+                            navController = navController,
+                            route = Screen.Auth.route,
+                            onLoggedIn = {
+                                navController.navigate(Screen.Main.route) {
+                                    popUpTo(navController.graph.startDestinationId) {
+                                        inclusive = true
                                     }
                                 }
-                            )
-                            composable(route = Screen.Main.route) {
-                                val isSystemInDarkTheme = isSystemInDarkTheme()
-                                Main(
-                                    onThemeChanged = {
-                                        viewModel.toggleDarkMode(isSystemInDarkTheme)
-                                    }
-                                )
                             }
+                        )
+                        composable(route = Screen.Main.route) {
+                            val isSystemInDarkTheme = isSystemInDarkTheme()
+                            Main(
+                                onThemeChanged = {
+                                    viewModel.toggleDarkMode(isSystemInDarkTheme)
+                                }
+                            )
                         }
                     }
                 }

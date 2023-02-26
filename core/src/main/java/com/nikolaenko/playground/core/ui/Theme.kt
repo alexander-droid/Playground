@@ -5,55 +5,41 @@ import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.unit.dp
-import com.nikolaenko.playground.core.ui.attr.DarkColors
+import com.nikolaenko.playground.core.ui.attr.DarkColorExtendedPalette
+import com.nikolaenko.playground.core.ui.attr.DarkColorMaterialPalette
 import com.nikolaenko.playground.core.ui.attr.Elevations
-import com.nikolaenko.playground.core.ui.attr.LightColors
+import com.nikolaenko.playground.core.ui.attr.ExtendedColors
+import com.nikolaenko.playground.core.ui.attr.LightColorExtendedPalette
+import com.nikolaenko.playground.core.ui.attr.LightColorMaterialPalette
+import com.nikolaenko.playground.core.ui.attr.LocalColors
 import com.nikolaenko.playground.core.ui.attr.LocalElevations
 import com.nikolaenko.playground.core.ui.attr.LocalPaddings
 import com.nikolaenko.playground.core.ui.attr.Paddings
 import com.nikolaenko.playground.core.ui.attr.Shapes
 import com.nikolaenko.playground.core.ui.attr.Typography
 
-private val DarkColorPalette = darkColorScheme(
-    primary = DarkColors.primary,
-    onPrimary = DarkColors.onPrimary,
-    secondary = DarkColors.secondary,
-    onSecondary = DarkColors.onSecondary,
-    background = DarkColors.background,
-    onBackground = DarkColors.onBackground,
-    surface = DarkColors.surface,
-    onSurface = DarkColors.onSurface
-)
-
-private val LightColorPalette = lightColorScheme(
-    primary = LightColors.primary,
-    onPrimary = LightColors.onPrimary,
-    secondary = LightColors.secondary,
-    onSecondary = LightColors.onSecondary,
-    background = LightColors.background,
-    onBackground = LightColors.onBackground,
-    surface = LightColors.surface,
-    onSurface = LightColors.onSurface
-)
-
 @Composable
 fun PlaygroundTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
+    val materialColors = if (darkTheme) {
+        DarkColorMaterialPalette
     } else {
-        LightColorPalette
+        LightColorMaterialPalette
+    }
+    val extendedColors = if (darkTheme) {
+        DarkColorExtendedPalette
+    } else {
+        LightColorExtendedPalette
     }
     CompositionLocalProvider(
         LocalPaddings provides Paddings(),
-        LocalElevations provides Elevations(card = 8.dp)
+        LocalElevations provides Elevations(card = 8.dp),
+        LocalColors provides extendedColors
     ) {
         MaterialTheme(
-            colorScheme = colors,
+            colorScheme = materialColors,
             typography = Typography,
             shapes = Shapes,
             content = content
@@ -63,9 +49,13 @@ fun PlaygroundTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compos
 
 object PlaygroundTheme {
 
-    val colors: ColorScheme
+    val materialColors: ColorScheme
         @Composable
         get() = MaterialTheme.colorScheme
+
+    val extendedColors: ExtendedColors
+        @Composable
+        get() = LocalColors.current
 
     val typography: Typography
         @Composable

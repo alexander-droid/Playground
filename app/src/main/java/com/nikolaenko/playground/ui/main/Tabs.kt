@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -68,4 +69,10 @@ sealed class TabScreen(val route: String, val image: ImageVector, @StringRes val
     object Tab1 : TabScreen("tab1", Icons.Filled.List, R.string.tab1)
     object Tab2 : TabScreen("tab2", Icons.Filled.Chat, R.string.tab2)
     object Tab3 : TabScreen("tab3", Icons.Filled.AreaChart, R.string.tab3)
+}
+
+@Preview
+@Composable
+fun TabsPreview() {
+    Tabs()
 }

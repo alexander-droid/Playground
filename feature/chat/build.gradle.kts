@@ -42,11 +42,9 @@ dependencies {
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
-    implementation(Libs.Androidx.Compose.uiToolingPreview)
+    debugImplementation(Libs.Androidx.Compose.uiTooling)
 
     implementation(Libs.Androidx.Navigation.navigationCompose)
-
-    implementation(Libs.Accompanist.insets)
 
     implementation(Libs.Androidx.DataStore.dataStore)
 }

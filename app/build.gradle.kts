@@ -67,8 +67,7 @@ dependencies {
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
-    implementation(Libs.Androidx.Compose.drawer)
-    implementation(Libs.Androidx.Compose.uiToolingPreview)
+    debugImplementation(Libs.Androidx.Compose.uiTooling)
     implementation(Libs.Androidx.Compose.materialIconsExtended)
     implementation(Libs.Androidx.Compose.activityCompose)
     implementation(Libs.Androidx.Compose.constraintLayout)
@@ -78,7 +77,6 @@ dependencies {
     kapt(Libs.Hilt.androidCompiler)
     kapt(Libs.Hilt.androidExtCompiler)
 
-    implementation(Libs.Accompanist.insets)
     implementation(Libs.Accompanist.navigationAnimation)
     implementation(Libs.Accompanist.systemUiController)
 }

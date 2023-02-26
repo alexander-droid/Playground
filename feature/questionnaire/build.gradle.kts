@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -42,9 +43,15 @@ dependencies {
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
-    implementation(Libs.Androidx.Compose.uiToolingPreview)
+    implementation(Libs.Androidx.Compose.constraintLayout)
+    implementation(Libs.Androidx.Compose.materialIconsExtended)
+    debugImplementation(Libs.Androidx.Compose.uiTooling)
+
+    implementation(Libs.Hilt.android)
+    implementation(Libs.Hilt.navigationCompose)
+    implementation(Libs.Accompanist.navigationAnimation)
+    implementation(Libs.Accompanist.insets)
+    kapt(Libs.Hilt.androidCompiler)
 
     implementation(Libs.Androidx.Navigation.navigationCompose)
-
-    implementation(Libs.Accompanist.insets)
 }

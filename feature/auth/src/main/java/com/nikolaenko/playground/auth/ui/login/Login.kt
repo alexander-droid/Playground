@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.nikolaenko.playground.auth.R
-import com.nikolaenko.playground.core.ui.AppButton
+import com.nikolaenko.playground.core.ui.widget.AppButton
 
 @Composable
 internal fun Login(

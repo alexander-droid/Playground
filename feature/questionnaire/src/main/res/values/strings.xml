@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="questionnaire">Questionnaire</string>
-    <string name="progress">Progress</string>
+    <string name="welcome_title">Questionnaire</string>
+    <string name="welcome_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="welcome_start">Start</string>
+    <string name="title_single_select">Single select</string>
+    <string name="title_multi_select">Multi select</string>
+    <string name="close">Close</string>
+    <string name="current_of_all">%d of %d</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="title_info">Info</string>
+    <string name="title_confirm">Confirm</string>
+    <string name="hint_first_name">First name</string>
+    <string name="hint_last_name">Last name</string>
+    <string name="hint_middle_name">Middle name</string>
 </resources>

@@ -6,6 +6,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Immutable
-data class Elevations(val card: Dp = 0.dp)
+data class Elevations(
+    val card: Dp = 8.dp,
+    val scrollTop: Dp = 2.dp,
+    val scrollBottom: Dp = 8.dp
+)
 
-internal val LocalElevations = staticCompositionLocalOf { Elevations() }
+val LocalElevations = staticCompositionLocalOf { Elevations() }

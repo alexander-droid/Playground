@@ -14,7 +14,7 @@ object Libs {
     }
 
     object Accompanist {
-        const val version = "0.23.1"
+        const val version = "0.28.0"
         const val insets = "com.google.accompanist:accompanist-insets:$version"
         const val systemUiController = "com.google.accompanist:accompanist-systemuicontroller:$version"
         const val navigationAnimation = "com.google.accompanist:accompanist-navigation-animation:$version"
@@ -52,11 +52,11 @@ object Libs {
             const val version = "1.4.0-alpha02"
             const val materialVersion = "1.1.0-alpha04"
             const val ui = "androidx.compose.ui:ui:$version"
-            const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
+            const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:1.4.0-alpha04"
+            const val uiTooling = "androidx.compose.ui:ui-tooling:1.4.0-alpha04"
             const val materialIconsExtended = "androidx.compose.material:material-icons-extended:$version"
             const val activityCompose = "androidx.activity:activity-compose:1.5.0"
             const val material = "androidx.compose.material3:material3:$materialVersion"
-            const val drawer = "androidx.drawerlayout:drawerlayout:1.1.1"
             const val materialRipple = "androidx.compose.material:material-ripple:$version"
             const val materialWindowSize = "aandroidx.compose.material3:material3-window-size-class:$materialVersion"
             const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.1"

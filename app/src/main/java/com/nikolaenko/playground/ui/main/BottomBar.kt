@@ -11,19 +11,15 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.nikolaenko.playground.core.ui.PlaygroundTheme
 
 @Composable
 fun BottomBar(
     navController: NavHostController,
     screens: List<TabScreen>
 ) {
-    NavigationBar(
-        containerColor = PlaygroundTheme.colors.primary
-    ) {
+    NavigationBar {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
-
         screens.forEach { screen ->
             NavigationBarItem(
                 icon = { Icon(screen.image, contentDescription = stringResource(screen.titleId)) },
