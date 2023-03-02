@@ -50,8 +50,5 @@ dependencies {
     implementation(Libs.Hilt.android)
     implementation(Libs.Hilt.navigationCompose)
     implementation(Libs.Accompanist.navigationAnimation)
-    implementation(Libs.Accompanist.insets)
     kapt(Libs.Hilt.androidCompiler)
-
-    implementation(Libs.Androidx.Navigation.navigationCompose)
 }

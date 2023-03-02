@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-internal fun Settings() {
+internal fun SettingsScreen() {
     Column(
         modifier = Modifier.statusBarsPadding().fillMaxSize()
     ) {

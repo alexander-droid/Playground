@@ -4,19 +4,20 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.nikolaenko.playground.profile.ui.profile.Profile
-import com.nikolaenko.playground.profile.ui.settings.Settings
+import com.nikolaenko.playground.profile.ui.profile.ProfileScreen
+import com.nikolaenko.playground.profile.ui.settings.SettingsScreen
 
+@Suppress("FunctionName")
 fun NavGraphBuilder.ProfileGraph(
     navController: NavHostController,
     route: String
 ) {
     navigation(startDestination = Screen.Profile.route, route = route) {
         composable(Screen.Profile.route) {
-            Profile()
+            ProfileScreen()
         }
         composable(Screen.Settings.route) {
-            Settings()
+            SettingsScreen()
         }
     }
 }

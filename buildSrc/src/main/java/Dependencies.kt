@@ -15,7 +15,6 @@ object Libs {
 
     object Accompanist {
         const val version = "0.28.0"
-        const val insets = "com.google.accompanist:accompanist-insets:$version"
         const val systemUiController = "com.google.accompanist:accompanist-systemuicontroller:$version"
         const val navigationAnimation = "com.google.accompanist:accompanist-navigation-animation:$version"
     }
@@ -26,6 +25,11 @@ object Libs {
         const val androidCompiler = "com.google.dagger:hilt-android-compiler:$version"
         const val androidExtCompiler = "androidx.hilt:hilt-compiler:1.0.0"
         const val navigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
+    }
+
+    object Coil {
+        const val version = "2.2.2"
+        const val coil = "io.coil-kt:coil-compose:$version"
     }
 
     object Androidx {
