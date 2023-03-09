@@ -5,7 +5,7 @@ object Libs {
     const val compileSdkVersion = 33
 
     object Gradle {
-        const val version = "8.0.0-alpha10"
+        const val version = "7.4.2"
     }
 
     object Kotlin {
