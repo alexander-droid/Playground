@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nikolaenko.playground.core.delegates.ErrorHandler
 import com.nikolaenko.playground.core.delegates.LoadingHandler
-import com.nikolaenko.playground.core.model.LoadingState
+import com.nikolaenko.playground.core.domain.model.LoadingState
 import com.nikolaenko.playground.core.logger.Logger
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow

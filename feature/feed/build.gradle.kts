@@ -39,7 +39,6 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature:feed:data"))
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
@@ -54,4 +53,6 @@ dependencies {
     kapt(Libs.Hilt.androidCompiler)
 
     implementation(Libs.Retrofit.refrofit)
+
+    implementation(Libs.Moshi.moshi)
 }

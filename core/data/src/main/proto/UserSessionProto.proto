@@ -1,5 +1,0 @@
-syntax = "proto3";
-
-message SessionData {
-  bool isLoggedIn = 1;
-}

@@ -39,7 +39,6 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature:profile:data"))
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)

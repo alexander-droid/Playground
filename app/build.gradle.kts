@@ -53,12 +53,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(project(":feature:feed"))
     implementation(project(":feature:profile"))
     implementation(project(":feature:chat"))
     implementation(project(":feature:auth"))
     implementation(project(":feature:questionnaire"))
-    implementation(project(":core"))
 
     implementation(Libs.Androidx.coreKtx)
     implementation(Libs.Androidx.Navigation.navigationCompose)

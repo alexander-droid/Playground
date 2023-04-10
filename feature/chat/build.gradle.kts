@@ -38,13 +38,10 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature:chat:data"))
 
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
     debugImplementation(Libs.Androidx.Compose.uiTooling)
 
     implementation(Libs.Androidx.Navigation.navigationCompose)
-
-    implementation(Libs.Androidx.DataStore.dataStore)
 }

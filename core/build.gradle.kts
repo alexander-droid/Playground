@@ -1,7 +1,13 @@
+import com.google.protobuf.gradle.generateProtoTasks
+import com.google.protobuf.gradle.plugins
+import com.google.protobuf.gradle.protobuf
+import com.google.protobuf.gradle.protoc
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.protobuf") version Libs.Protobuf.pluginVersion
 }
 
 android {
@@ -38,12 +44,13 @@ android {
 }
 
 dependencies {
-    api(project(":core:data"))
-
     implementation(Libs.Androidx.Compose.ui)
     implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.paging)
     debugImplementation(Libs.Androidx.Compose.uiTooling)
+
     implementation(Libs.Androidx.DataStore.dataStore)
+    implementation(Libs.Protobuf.javalite)
 
     implementation(Libs.Androidx.Navigation.navigationCompose)
 
@@ -55,4 +62,20 @@ dependencies {
 
     implementation(Libs.Retrofit.refrofit)
     implementation(Libs.Retrofit.moshi)
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${Libs.Protobuf.version}"
+    }
+
+    generateProtoTasks {
+        all().forEach { task ->
+            task.plugins {
+                this.create("java") {
+                    this.option("lite")
+                }
+            }
+        }
+    }
 }

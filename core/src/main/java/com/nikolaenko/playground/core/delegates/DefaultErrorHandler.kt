@@ -2,8 +2,8 @@ package com.nikolaenko.playground.core.delegates
 
 import android.content.Context
 import androidx.compose.runtime.Stable
-import com.nikolaenko.playground.core.data.R
-import com.nikolaenko.playground.core.model.alert.ErrorMessage
+import com.nikolaenko.playground.core.R
+import com.nikolaenko.playground.core.domain.model.alert.ErrorMessage
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow

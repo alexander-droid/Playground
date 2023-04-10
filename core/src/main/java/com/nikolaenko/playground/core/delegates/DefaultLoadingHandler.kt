@@ -1,6 +1,6 @@
 package com.nikolaenko.playground.core.delegates
 
-import com.nikolaenko.playground.core.model.LoadingState
+import com.nikolaenko.playground.core.domain.model.LoadingState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
