@@ -35,4 +35,9 @@ android {
 
 dependencies {
     api(project(":feature:feed:domain"))
+    implementation(project(":core::data"))
+
+    implementation(Libs.Androidx.Compose.paging)
+    implementation(Libs.Retrofit.refrofit)
+    implementation(Libs.Moshi.moshi)
 }

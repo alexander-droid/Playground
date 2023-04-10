@@ -44,6 +44,7 @@ dependencies {
 
     implementation(Libs.Androidx.DataStore.dataStore)
     implementation(Libs.Protobuf.javalite)
+    implementation(Libs.Androidx.Compose.paging)
 }
 
 protobuf {

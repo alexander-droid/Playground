@@ -11,7 +11,7 @@ import androidx.compose.ui.res.stringResource
 import com.nikolaenko.playground.feed.R
 
 @Composable
-internal fun PostDetails() {
+internal fun PostDetailsScreen() {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

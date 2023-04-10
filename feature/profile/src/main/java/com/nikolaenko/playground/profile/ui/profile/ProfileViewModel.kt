@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
+internal class ProfileViewModel @Inject constructor(
     private val stateHandler: StateHandler<Profile>,
     private val errorHandler: ErrorHandler,
     private val loadingHandler: LoadingHandler,

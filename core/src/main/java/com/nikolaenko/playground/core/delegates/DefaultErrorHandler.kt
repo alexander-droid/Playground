@@ -22,7 +22,7 @@ interface ErrorHandler {
 
 @Stable
 class DefaultErrorHandler(
-
+    private val context: Context
 ) : ErrorHandler {
 
     override val errorFlow = StableFlow(MutableStateFlow<ErrorMessage?>(null))
@@ -32,7 +32,7 @@ class DefaultErrorHandler(
     override suspend fun consumeException(throwable: Throwable) {
         updateError(
             ErrorMessage(
-                message = throwable.localizedMessage ?: "context.getString(R.string.error_unknown)",
+                message = throwable.localizedMessage ?: context.getString(R.string.error_unknown),
                 type = ErrorMessage.Type.ERROR
             )
         )

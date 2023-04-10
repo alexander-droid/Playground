@@ -32,6 +32,22 @@ object Libs {
         const val coil = "io.coil-kt:coil-compose:$version"
     }
 
+    object Retrofit {
+        const val version = "2.9.0"
+
+        const val refrofit = "com.squareup.retrofit2:retrofit:$version"
+        const val moshi = "com.squareup.retrofit2:converter-moshi:$version"
+    }
+
+    object Moshi {
+        const val version = "1.14.0"
+
+        const val moshi = "com.squareup.moshi:moshi:$version"
+        const val adapters = "com.squareup.moshi:moshi-adapters:$version"
+        const val kotlin = "com.squareup.moshi:moshi-kotlin:$version"
+        const val kapt = "com.squareup.moshi:moshi-kotlin-codegen:1.13.0:$version"
+    }
+
     object Androidx {
 
         const val lifecycleVersion = "2.6.0-alpha01"
@@ -39,16 +55,22 @@ object Libs {
         const val material = "com.google.android.material:material:1.6.1"
         const val coreKtx = "androidx.core:core-ktx:1.8.0"
         const val splash = "androidx.core:core-splashscreen:1.0.0-beta02"
+
         // ViewModel
         const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+
         // ViewModel utilities for Compose
         const val lifecycleViewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
+
         // Lifecycles only (without ViewModel or LiveData)
         const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+
         // Annotation processor - if using Java8, use the following instead of lifecycle-compiler
         const val lifecycleCommonJava8 = "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+
         // optional - helpers for implementing LifecycleOwner in a Service
         const val lifecycleService = "androidx.lifecycle:lifecycle-service:$lifecycleVersion"
+
         // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
         const val lifecycleProcess = "androidx.lifecycle:lifecycle-process:$lifecycleVersion"
 
@@ -64,6 +86,7 @@ object Libs {
             const val materialRipple = "androidx.compose.material:material-ripple:$version"
             const val materialWindowSize = "aandroidx.compose.material3:material3-window-size-class:$materialVersion"
             const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+            const val paging = "androidx.paging:paging-compose:1.0.0-alpha18"
         }
 
         object Navigation {

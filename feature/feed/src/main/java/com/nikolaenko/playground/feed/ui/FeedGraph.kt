@@ -4,8 +4,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.nikolaenko.playground.feed.ui.details.PostDetails
-import com.nikolaenko.playground.feed.ui.feed.Feed
+import com.nikolaenko.playground.feed.ui.details.PostDetailsScreen
+import com.nikolaenko.playground.feed.ui.feed.FeedScreen
 
 @Suppress("FunctionName")
 fun NavGraphBuilder.FeedGraph(
@@ -14,14 +14,14 @@ fun NavGraphBuilder.FeedGraph(
 ) {
     navigation(startDestination = Screen.Feed.route, route = route) {
         composable(Screen.Feed.route) {
-            Feed(
+            FeedScreen(
                 goToDetails = {
                     navController.navigate(Screen.PostDetails.route)
                 }
             )
         }
         composable(Screen.PostDetails.route) {
-            PostDetails()
+            PostDetailsScreen()
         }
     }
 }

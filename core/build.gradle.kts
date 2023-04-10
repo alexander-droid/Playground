@@ -49,4 +49,10 @@ dependencies {
 
     implementation(Libs.Hilt.android)
     kapt(Libs.Hilt.androidCompiler)
+
+    implementation(Libs.Moshi.moshi)
+    implementation(Libs.Moshi.kotlin)
+
+    implementation(Libs.Retrofit.refrofit)
+    implementation(Libs.Retrofit.moshi)
 }
