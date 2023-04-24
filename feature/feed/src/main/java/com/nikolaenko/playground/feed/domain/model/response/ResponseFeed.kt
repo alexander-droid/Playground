@@ -1,18 +1,18 @@
-package com.nikolaenko.playground.feed.data.model.response
+package com.nikolaenko.playground.feed.domain.model.response
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ResponseFeed(
-    @Json(name = "feed")
-    val feed: List<Post>,
-
     @Json(name = "prevKey")
     val prevKey: String?,
 
     @Json(name = "nextKey")
-    val nextKey: String?
+    val nextKey: String?,
+
+    @Json(name = "feed")
+    val feed: List<Post>
 ) {
 
     @JsonClass(generateAdapter = true)

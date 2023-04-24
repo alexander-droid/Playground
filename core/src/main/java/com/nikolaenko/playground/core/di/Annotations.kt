@@ -4,6 +4,10 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
+annotation class MockClient
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
 annotation class AuthorizedClient
 
 @Qualifier

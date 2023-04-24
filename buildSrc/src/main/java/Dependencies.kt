@@ -5,7 +5,7 @@ object Libs {
     const val compileSdkVersion = 33
 
     object Gradle {
-        const val version = "7.4.2"
+        const val version = "8.0.0"
     }
 
     object Kotlin {
@@ -49,7 +49,7 @@ object Libs {
 
     object Androidx {
         const val material = "com.google.android.material:material:1.8.0"
-        const val coreKtx = "androidx.core:core-ktx:1.9.0"
+        const val coreKtx = "androidx.core:core-ktx:1.10.0"
         const val splash = "androidx.core:core-splashscreen:1.0.0"
 
         object Compose {
@@ -60,7 +60,8 @@ object Libs {
             const val uiTooling = "androidx.compose.ui:ui-tooling:1.4.1"
             const val materialIconsExtended = "androidx.compose.material:material-icons-extended:1.4.1"
             const val activityCompose = "androidx.activity:activity-compose:1.7.0"
-            const val material = "androidx.compose.material3:material3:1.0.1"
+            const val material3 = "androidx.compose.material3:material3:1.0.1"
+            const val material = "androidx.compose.material:material:1.4.1"
             const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
             const val paging = "androidx.paging:paging-compose:1.0.0-alpha18"
         }
@@ -75,7 +76,8 @@ object Libs {
     }
 
     object Protobuf {
-        const val pluginVersion = "0.8.12"
-        const val javalite = "com.google.protobuf:protobuf-javalite:3.19.4"
+        const val version = "3.19.4"
+        const val pluginVersion = "0.9.0"
+        const val javalite = "com.google.protobuf:protobuf-javalite:$version"
     }
 }

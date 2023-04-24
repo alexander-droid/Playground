@@ -1,7 +1,9 @@
 package com.nikolaenko.playground.feed.di
 
 import com.nikolaenko.playground.core.di.AuthorizedClient
-import com.nikolaenko.playground.feed.data.network.FeedApi
+import com.nikolaenko.playground.core.di.MockClient
+import com.nikolaenko.playground.feed.data.network.FeedApiMock
+import com.nikolaenko.playground.feed.domain.network.FeedApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,8 +17,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    @MockClient
+    fun provideFeedApiMock(): FeedApi = FeedApiMock()
+
+    @Provides
+    @Singleton
     @AuthorizedClient
-    fun provideApiAddressSearch(
+    fun provideFeedApi(
         @AuthorizedClient retrofit: Retrofit
     ): FeedApi = retrofit.create(FeedApi::class.java)
 

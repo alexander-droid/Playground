@@ -1,4 +1,4 @@
-package com.nikolaenko.playground.feed.data.model.response.base
+package com.nikolaenko.playground.core.domain.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

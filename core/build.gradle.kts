@@ -1,8 +1,3 @@
-import com.google.protobuf.gradle.generateProtoTasks
-import com.google.protobuf.gradle.plugins
-import com.google.protobuf.gradle.protobuf
-import com.google.protobuf.gradle.protoc
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -29,11 +24,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -45,7 +40,7 @@ android {
 
 dependencies {
     implementation(Libs.Androidx.Compose.ui)
-    implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.material3)
     implementation(Libs.Androidx.Compose.paging)
     debugImplementation(Libs.Androidx.Compose.uiTooling)
 
@@ -71,7 +66,7 @@ protobuf {
 
     generateProtoTasks {
         all().forEach { task ->
-            task.plugins {
+            task.builtins {
                 this.create("java") {
                     this.option("lite")
                 }

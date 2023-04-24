@@ -23,11 +23,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -41,7 +41,7 @@ dependencies {
     implementation(project(":core"))
 
     implementation(Libs.Androidx.Compose.ui)
-    implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.material3)
     implementation(Libs.Androidx.Compose.constraintLayout)
     implementation(Libs.Androidx.Compose.materialIconsExtended)
     debugImplementation(Libs.Androidx.Compose.uiTooling)

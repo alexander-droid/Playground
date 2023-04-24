@@ -1,6 +1,5 @@
 package com.nikolaenko.playground.core.di
 
-import com.nikolaenko.playground.core.BuildConfig
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides

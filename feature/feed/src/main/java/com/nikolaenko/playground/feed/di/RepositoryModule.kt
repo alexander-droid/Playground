@@ -1,6 +1,7 @@
 package com.nikolaenko.playground.feed.di
 
-import com.nikolaenko.playground.feed.data.network.FeedApi
+import com.nikolaenko.playground.core.di.MockClient
+import com.nikolaenko.playground.feed.domain.network.FeedApi
 import com.nikolaenko.playground.feed.data.repository.FeedRepositoryImpl
 import com.nikolaenko.playground.feed.domain.repository.FeedRepository
 import dagger.Module
@@ -13,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 class RepositoryModule {
 
     @Provides
-    fun feedRepository(api: FeedApi): FeedRepository {
+    fun feedRepository(@MockClient api: FeedApi): FeedRepository {
         return FeedRepositoryImpl(api)
     }
 }
