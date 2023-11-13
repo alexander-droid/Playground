@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
 
             val state by viewModel.state.collectAsState()
             PlaygroundTheme {
-                ApplyBarColors()
+//                ApplyBarColors()
                 splash.setKeepOnScreenCondition { state.isLoggedIn == null }
                 val isLoggedIn = state.isLoggedIn ?: return@PlaygroundTheme
                 val startDestination = if (isLoggedIn) {
