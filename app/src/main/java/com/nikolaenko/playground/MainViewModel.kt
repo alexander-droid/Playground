@@ -37,13 +37,13 @@ class MainViewModelImpl @Inject constructor(
             }
         }
 
-        launch {
-            userSessionRepository.flow.collect {
-                state.value = state.value.copy(
-                    isLoggedIn = true //TODO
-                )
-            }
-        }
+//        launch {
+//            userSessionRepository.flow.collect {
+//                state.value = state.value.copy(
+//                    isLoggedIn = true //TODO
+//                )
+//            }
+//        }
     }
 
     override fun toggleDarkMode(isSystemInDarkTheme: Boolean) {
