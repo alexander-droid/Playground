@@ -2,8 +2,8 @@ package com.nikolaenko.playground.core.delegates
 
 import android.content.Context
 import androidx.compose.runtime.Stable
-import com.nikolaenko.playground.core.data.R
-import com.nikolaenko.playground.core.model.alert.ErrorMessage
+import com.nikolaenko.playground.core.R
+import com.nikolaenko.playground.core.domain.model.alert.ErrorMessage
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -22,7 +22,7 @@ interface ErrorHandler {
 
 @Stable
 class DefaultErrorHandler(
-
+    private val context: Context
 ) : ErrorHandler {
 
     override val errorFlow = StableFlow(MutableStateFlow<ErrorMessage?>(null))
@@ -32,7 +32,7 @@ class DefaultErrorHandler(
     override suspend fun consumeException(throwable: Throwable) {
         updateError(
             ErrorMessage(
-                message = throwable.localizedMessage ?: "context.getString(R.string.error_unknown)",
+                message = throwable.localizedMessage ?: context.getString(R.string.error_unknown),
                 type = ErrorMessage.Type.ERROR
             )
         )

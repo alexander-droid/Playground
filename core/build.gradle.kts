@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.protobuf") version Libs.Protobuf.pluginVersion
 }
 
 android {
@@ -23,11 +24,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -38,15 +39,38 @@ android {
 }
 
 dependencies {
-    api(project(":core:data"))
-
     implementation(Libs.Androidx.Compose.ui)
-    implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.material3)
+    implementation(Libs.Androidx.Compose.paging)
     debugImplementation(Libs.Androidx.Compose.uiTooling)
+
     implementation(Libs.Androidx.DataStore.dataStore)
+    implementation(Libs.Protobuf.javalite)
 
     implementation(Libs.Androidx.Navigation.navigationCompose)
 
     implementation(Libs.Hilt.android)
     kapt(Libs.Hilt.androidCompiler)
+
+    implementation(Libs.Moshi.moshi)
+    implementation(Libs.Moshi.kotlin)
+
+    implementation(Libs.Retrofit.refrofit)
+    implementation(Libs.Retrofit.moshi)
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${Libs.Protobuf.version}"
+    }
+
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                this.create("java") {
+                    this.option("lite")
+                }
+            }
+        }
+    }
 }

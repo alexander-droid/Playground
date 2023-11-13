@@ -1,32 +1,31 @@
 package com.nikolaenko.playground.core.logger
 
 import android.util.Log
-//import com.nikolaenko.playground.core.BuildConfig
 
 object Logger {
 
     fun d(message: String) {
-//        if (BuildConfig.DEBUG) {
+        if (true) {
             Log.d(TAG, message)
-//        }
+        }
     }
 
     fun v(message: String) {
-//        if (BuildConfig.DEBUG) {
+        if (true) {
             Log.v(TAG, message)
-//        }
+        }
     }
 
     fun w(message: String) {
-//        if (BuildConfig.DEBUG) {
+        if (true) {
             Log.w(TAG, message)
-//        }
+        }
     }
 
     fun e(t: Throwable) {
-//        if (BuildConfig.DEBUG) {
+        if (true) {
             Log.e(TAG, "", t)
-//        }
+        }
     }
 
     const val TAG = "PlaygroundTag"

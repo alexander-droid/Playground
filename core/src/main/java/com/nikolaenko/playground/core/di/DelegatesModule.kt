@@ -19,7 +19,7 @@ object DelegatesModule {
     fun defaultErrorHandler(
         @ApplicationContext context: Context
     ): ErrorHandler {
-        return DefaultErrorHandler()
+        return DefaultErrorHandler(context)
     }
 
     @Provides

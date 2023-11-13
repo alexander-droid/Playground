@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -41,13 +41,10 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature:auth:data"))
 
     implementation(Libs.Androidx.Compose.ui)
-    implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.material3)
     debugImplementation(Libs.Androidx.Compose.uiTooling)
 
     implementation(Libs.Androidx.Navigation.navigationCompose)
-
-    implementation(Libs.Androidx.DataStore.dataStore)
 }

@@ -1,10 +1,3 @@
-buildscript {
-
-    dependencies {
-
-    }
-}
-
 plugins {
     id("com.android.application") version Libs.Gradle.version apply false
     id("com.android.library") version Libs.Gradle.version apply false

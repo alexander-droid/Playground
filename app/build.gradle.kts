@@ -32,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
         freeCompilerArgs = listOf("-Xjvm-default=compatibility")
     }
     buildFeatures {
@@ -53,12 +53,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(project(":feature:feed"))
     implementation(project(":feature:profile"))
     implementation(project(":feature:chat"))
     implementation(project(":feature:auth"))
     implementation(project(":feature:questionnaire"))
-    implementation(project(":core"))
 
     implementation(Libs.Androidx.coreKtx)
     implementation(Libs.Androidx.Navigation.navigationCompose)
@@ -66,7 +66,7 @@ dependencies {
     implementation(Libs.Androidx.splash)
 
     implementation(Libs.Androidx.Compose.ui)
-    implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.material3)
     debugImplementation(Libs.Androidx.Compose.uiTooling)
     implementation(Libs.Androidx.Compose.materialIconsExtended)
     implementation(Libs.Androidx.Compose.activityCompose)

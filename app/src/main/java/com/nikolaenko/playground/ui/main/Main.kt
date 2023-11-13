@@ -4,12 +4,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.ModalDrawerSheet
-import androidx.compose.material3.ModalNavigationDrawer
-import androidx.compose.material3.NavigationDrawerItem
-import androidx.compose.material3.Text
-import androidx.compose.material3.rememberDrawerState
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,6 +24,7 @@ import com.nikolaenko.playground.profile.ui.ProfileGraph
 import com.nikolaenko.playground.questionnaire.ui.QuestionnaireGraph
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Main(onThemeChanged: () -> Unit) {
     val navController = rememberNavController()

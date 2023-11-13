@@ -23,7 +23,6 @@ internal fun ProfileScreen() {
 
     val viewModel = hiltViewModel<ProfileViewModel>()
     val state by viewModel.stateFlow.collectAsState()
-
     ScreenState(viewModel) {
         Column(
             modifier = Modifier

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -22,11 +23,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -38,11 +39,21 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature:feed:data"))
 
     implementation(Libs.Androidx.Compose.ui)
+    implementation(Libs.Androidx.Compose.material3)
     implementation(Libs.Androidx.Compose.material)
+    implementation(Libs.Androidx.Compose.paging)
+    implementation(Libs.Androidx.Compose.materialIconsExtended)
+    implementation(Libs.Coil.coil)
     debugImplementation(Libs.Androidx.Compose.uiTooling)
 
-    implementation(Libs.Androidx.Navigation.navigationCompose)
+    implementation(Libs.Hilt.android)
+    implementation(Libs.Hilt.navigationCompose)
+    implementation(Libs.Accompanist.navigationAnimation)
+    kapt(Libs.Hilt.androidCompiler)
+
+    implementation(Libs.Retrofit.refrofit)
+
+    implementation(Libs.Moshi.moshi)
 }
